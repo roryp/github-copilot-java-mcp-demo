@@ -128,9 +128,9 @@ downloads the correct Maven version automatically.
   the Java extension pack). It lists every Maven *lifecycle goal* you can click
   to run.
 - **Key files:**
-  - [springboot-mcp-demo/pom.xml](springboot-mcp-demo/pom.xml) — declares the
+  - [pom.xml](pom.xml) — declares the
     parent, dependencies and Java version.
-  - `springboot-mcp-demo/mvnw.cmd` — the wrapper entry point.
+  - `mvnw.cmd` — the wrapper entry point.
 - **The goals you'll use most:**
 
   | Command | What it does |
@@ -167,7 +167,7 @@ downloads the correct Maven version automatically.
 ### 2b. What got created
 
 ```
-springboot-mcp-demo/
+./
 ├── pom.xml                         # Boot 4.1 + Spring AI BOM 2.0.0 + Java 25
 ├── mvnw / mvnw.cmd                 # Maven Wrapper
 └── src/main/
@@ -184,7 +184,7 @@ springboot-mcp-demo/
         └── static/index.html                # the web UI
 ```
 
-The REST surface in [TodoController.java](springboot-mcp-demo/src/main/java/com/example/tododemo/web/TodoController.java):
+The REST surface in [TodoController.java](src/main/java/com/example/tododemo/web/TodoController.java):
 
 | Method | Path | Purpose |
 |---|---|---|
@@ -200,7 +200,6 @@ The REST surface in [TodoController.java](springboot-mcp-demo/src/main/java/com/
   `springboot-mcp-demo`, and click **▶ Run**.
 - **Terminal:**
   ```powershell
-  cd springboot-mcp-demo
   .\mvnw.cmd spring-boot:run
   ```
 
@@ -222,7 +221,7 @@ discover and call.
 
 ### 3a. The MCP tools
 
-[TodoTools.java](springboot-mcp-demo/src/main/java/com/example/tododemo/mcp/TodoTools.java)
+[TodoTools.java](src/main/java/com/example/tododemo/mcp/TodoTools.java)
 is an ordinary Spring `@Component`. Each method is annotated with `@McpTool` and
 delegates to `TodoService`:
 
@@ -240,7 +239,7 @@ wiring code required.
 
 ### 3b. One critical setting
 
-In [application.properties](springboot-mcp-demo/src/main/resources/application.properties):
+In [application.properties](src/main/resources/application.properties):
 
 ```properties
 spring.ai.mcp.server.protocol=STREAMABLE
@@ -302,7 +301,7 @@ The UI exposes stable `data-testid` hooks (`new-todo-input`, `add-todo`,
 ### 4b. The MCP endpoint directly
 
 A reusable script,
-[scripts/mcp-smoke-test.ps1](springboot-mcp-demo/scripts/mcp-smoke-test.ps1),
+[scripts/mcp-smoke-test.ps1](scripts/mcp-smoke-test.ps1),
 performs the full MCP handshake over Streamable-HTTP and was confirmed to output:
 
 ```text
@@ -316,7 +315,7 @@ MCP smoke test PASSED.
 
 Run it yourself (app must be running):
 ```powershell
-powershell -ExecutionPolicy Bypass -File springboot-mcp-demo\scripts\mcp-smoke-test.ps1
+powershell -ExecutionPolicy Bypass -File scripts\mcp-smoke-test.ps1
 ```
 
 ### 4c. Automated build tests
@@ -356,9 +355,8 @@ for the cloud agent: add database persistence.
 
 | Path | What it is |
 |---|---|
-| [springboot-mcp-demo/](springboot-mcp-demo) | The complete sample application |
-| [springboot-mcp-demo/src/main/java/com/example/tododemo/mcp/TodoTools.java](springboot-mcp-demo/src/main/java/com/example/tododemo/mcp/TodoTools.java) | The `@McpTool` definitions |
-| [springboot-mcp-demo/scripts/mcp-smoke-test.ps1](springboot-mcp-demo/scripts/mcp-smoke-test.ps1) | MCP endpoint test script |
+| [src/main/java/com/example/tododemo/mcp/TodoTools.java](src/main/java/com/example/tododemo/mcp/TodoTools.java) | The `@McpTool` definitions |
+| [scripts/mcp-smoke-test.ps1](scripts/mcp-smoke-test.ps1) | MCP endpoint test script |
 | [.vscode/mcp.json](.vscode/mcp.json) | Registers the app's MCP server with VS Code |
 | [docs/copilot-agent-issue.md](docs/copilot-agent-issue.md) | The ready-to-assign cloud-agent issue |
 | [docs/images/todo-ui-demo.png](docs/images/todo-ui-demo.png) | Screenshot from the Playwright run |
@@ -369,7 +367,6 @@ for the cloud agent: add database persistence.
 
 ```powershell
 # Build & test
-cd springboot-mcp-demo
 .\mvnw.cmd clean package            # compile, test, build the JAR
 
 # Run (either one)
