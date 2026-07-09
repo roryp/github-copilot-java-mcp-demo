@@ -3,7 +3,7 @@
 > Copy everything under the line into a **new GitHub issue**, then assign it to
 > **@copilot** (or use **"Delegate to coding agent"** from the GitHub Pull
 > Requests view in VS Code). The agent will open a pull request you can review.
-> See step 5 of `DEMO-WALKTHROUGH.md` for the full workflow.
+> See Step 5 of the [README](../README.md) for the full workflow.
 
 ---
 
