@@ -23,12 +23,6 @@ and was used to validate every step below.
 | **What's next** | A pre-written issue lets the GitHub Copilot **cloud** agent add database persistence on its own and open a pull request. |
 | **Stack (all latest GA)** | Java 25 · Spring Boot 4.1.0 · Spring AI 2.0.0 · Maven 3.9.11 |
 
-![The Todo MCP demo web UI — one item created via an MCP tool (completed), one via the UI](docs/images/todo-ui-demo.png)
-
-> The screenshot above is a real capture from the Playwright run: item **#1** was
-> created by calling the MCP `add_todo` tool, item **#2** was added through the
-> browser UI, and #1 was completed by clicking its checkbox.
-
 ---
 
 ## Architecture at a glance
@@ -290,9 +284,8 @@ endpoint** — using the Playwright MCP server.
 With the app running, the Playwright MCP server drives a real browser. In Copilot
 agent mode you can ask it to *"open http://localhost:8080, add a todo, complete
 it, then delete it,"* and it will navigate, type, click and verify. The
-validation run for this guide did exactly that and produced the screenshot at the
-top — confirming: create, complete (with persistence), and delete all work
-through the UI.
+validation run for this guide did exactly that — confirming: create, complete
+(with persistence), and delete all work through the UI.
 
 The UI exposes stable `data-testid` hooks (`new-todo-input`, `add-todo`,
 `todo-item`, `delete-todo`) so the browser steps are robust.
@@ -358,7 +351,6 @@ for the cloud agent: add database persistence.
 | [scripts/mcp-smoke-test.ps1](scripts/mcp-smoke-test.ps1) | MCP endpoint test script |
 | [.vscode/mcp.json](.vscode/mcp.json) | Registers the app's MCP server with VS Code |
 | [docs/copilot-agent-issue.md](docs/copilot-agent-issue.md) | The ready-to-assign cloud-agent issue |
-| [docs/images/todo-ui-demo.png](docs/images/todo-ui-demo.png) | Screenshot from the Playwright run |
 
 ---
 
