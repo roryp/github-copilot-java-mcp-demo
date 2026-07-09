@@ -176,8 +176,7 @@ downloads the correct Maven version automatically.
     │   ├── model/Todo.java
     │   ├── repository/TodoRepository.java   # in-memory (becomes the Step 5 task)
     │   ├── service/TodoService.java         # shared by REST + MCP
-    │   ├── web/TodoController.java          # REST /api/todos
-    │   ├── web/dto/…                        # request bodies + validation
+    │   ├── web/TodoController.java          # REST /api/todos + request records (validation)
     │   └── mcp/TodoTools.java               # @McpTool methods
     └── resources/
         ├── application.properties

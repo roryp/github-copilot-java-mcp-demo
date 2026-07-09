@@ -1,10 +1,10 @@
 package com.example.tododemo.service;
 
-import com.example.tododemo.exception.TodoNotFoundException;
 import com.example.tododemo.model.Todo;
 import com.example.tododemo.repository.TodoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.server.ResponseStatusException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -53,7 +53,7 @@ class TodoServiceTest {
     @Test
     void getMissingTodoThrows() {
         assertThatThrownBy(() -> service.get(999L))
-                .isInstanceOf(TodoNotFoundException.class);
+                .isInstanceOf(ResponseStatusException.class);
     }
 
     @Test

@@ -2,9 +2,8 @@ package com.example.tododemo.web;
 
 import com.example.tododemo.model.Todo;
 import com.example.tododemo.service.TodoService;
-import com.example.tododemo.web.dto.CreateTodoRequest;
-import com.example.tododemo.web.dto.UpdateTodoRequest;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -65,5 +64,14 @@ public class TodoController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+
+    /** Request body for creating a todo. */
+    public record CreateTodoRequest(@NotBlank(message = "title must not be blank") String title) {
+    }
+
+    /** Request body for updating a todo's title and completion status. */
+    public record UpdateTodoRequest(@NotBlank(message = "title must not be blank") String title,
+                                    boolean completed) {
     }
 }

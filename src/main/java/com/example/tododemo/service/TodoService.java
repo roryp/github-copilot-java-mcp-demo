@@ -1,10 +1,11 @@
 package com.example.tododemo.service;
 
-import com.example.tododemo.exception.TodoNotFoundException;
 import com.example.tododemo.model.Todo;
 import com.example.tododemo.repository.TodoRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
 import java.util.List;
@@ -30,7 +31,8 @@ public class TodoService {
     }
 
     public Todo get(Long id) {
-        return repository.findById(id).orElseThrow(() -> new TodoNotFoundException(id));
+        return repository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Todo " + id + " not found"));
     }
 
     public Todo add(String title) {
@@ -53,7 +55,7 @@ public class TodoService {
 
     public void delete(Long id) {
         if (!repository.deleteById(id)) {
-            throw new TodoNotFoundException(id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Todo " + id + " not found");
         }
     }
 
