@@ -12,7 +12,7 @@
 	<artifactId>springboot-mcp-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot-mcp-demo</name>
-	<description>Spring Boot Todo API exposed as MCP tools</description>
+	<description>Spring Boot Todo web app exposed as MCP tools</description>
 	<properties>
 		<java.version>25</java.version>
 		<spring-ai.version>2.0.0</spring-ai.version>
@@ -35,11 +35,6 @@
 			<artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
