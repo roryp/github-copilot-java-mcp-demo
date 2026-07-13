@@ -22,11 +22,11 @@
 
 **The running Todo web app:**
 
-![Todo web app](docs/images/01-web-app.png)
+![Todo web app](../docs/images/01-web-app.png)
 
 **The Spring Initializr version picker — auto-captured by `scripts/capture-initializr.ps1`:**
 
-![Spring Initializr version picker](docs/images/00-initializr.png)
+![Spring Initializr version picker](../docs/images/00-initializr.png)
 
 ### Demo — Debug & watch memory
 
@@ -39,15 +39,15 @@
 
 **Actuator health endpoint (all systems UP):**
 
-![Actuator health](docs/images/02-actuator-health.png)
+![Actuator health](../docs/images/02-actuator-health.png)
 
 **Paused at the breakpoint — Variables panel and live inline values (auto-captured by `scripts/capture-window.ps1`):**
 
-![Debug breakpoint](docs/images/04-debug-breakpoint.png)
+![Debug breakpoint](../docs/images/04-debug-breakpoint.png)
 
 **Spring Boot Dashboard Memory view — live heap gauge (auto-captured by `scripts/capture-window.ps1`):**
 
-![Memory view](docs/images/05-memory-view.png)
+![Memory view](../docs/images/05-memory-view.png)
 
 ### Outro — Talking head (~15s)
 
@@ -76,11 +76,11 @@
 
 **Proof it works — a todo created *through MCP* appears in the web UI** (last row):
 
-![Todo added via MCP](docs/images/03-mcp-added-todo.png)
+![Todo added via MCP](../docs/images/03-mcp-added-todo.png)
 
 **Copilot Chat calling the `todo-mcp` tools — the `add_todo` call and its JSON result:**
 
-![Copilot Chat todo-mcp tool call](docs/images/06-copilot-mcp-chat.png)
+![Copilot Chat todo-mcp tool call](../docs/images/06-copilot-mcp-chat.png)
 
 ### Outro — Talking head (~15s)
 
@@ -118,7 +118,7 @@ MCP smoke test PASSED.
 
 **Playwright driving the UI mid-run — auto-captured by `scripts/screenshots/capture.mjs`:**
 
-![Playwright run](docs/images/07-playwright-run.png)
+![Playwright run](../docs/images/07-playwright-run.png)
 
 ### Outro — Talking head (~15s)
 
@@ -145,11 +145,11 @@ MCP smoke test PASSED.
 
 **The issue assigned to the Copilot coding agent (@copilot) — auto-captured by `scripts/screenshots/capture.mjs`:**
 
-![Issue assigned to Copilot](docs/images/08-issue-assigned.png)
+![Issue assigned to Copilot](../docs/images/08-issue-assigned.png)
 
 **The pull request the Copilot agent opened — its diff (13 files: new JPA entity, repository, `dueDate`, tests) — auto-captured by `scripts/screenshots/capture.mjs`:**
 
-![Agent pull request](docs/images/09-agent-pr.png)
+![Agent pull request](../docs/images/09-agent-pr.png)
 
 ### Outro — Talking head (~20s)
 
