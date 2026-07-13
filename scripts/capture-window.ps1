@@ -3,10 +3,12 @@
 
     Screenshots the VS Code UI moments that Playwright CANNOT drive because they
     are VS Code's own chrome (no screenshot API exists for them):
-        00-initializr.png        Spring Initializr picker / Extensions view
         04-debug-breakpoint.png  paused breakpoint + Variables panel
         05-memory-view.png       Spring Boot Dashboard Memory view gauges
         06-copilot-mcp-chat.png  Copilot Chat panel with the todo-mcp tool call
+
+    (The Spring Initializr picker, 00-initializr.png, is captured by its own
+    keystroke-driven helper: scripts/capture-initializr.ps1.)
 
     HOW IT WORKS: it finds the actual VS Code window by its process (Code.exe) and
     captures it with the Win32 PrintWindow API using the PW_RENDERFULLCONTENT flag
