@@ -6,7 +6,7 @@
 
 ### Intro — Talking head (~15s)
 
-> First of four short videos where we take one Spring Boot app all the way — from an empty editor to something GitHub Copilot can drive and even improve. People think a Java web app means endless setup and clunky debugging — it really doesn't anymore. In this one I'll scaffold the app, run it, then set a breakpoint and watch its memory live, all in VS Code. So let's jump right in.
+> In this video, I'll build and debug a Spring Boot app entirely in VS Code. I'll use Spring Initializr for scaffolding, breakpoints to inspect the code, and Actuator for live runtime insight. Let's jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
@@ -51,7 +51,7 @@
 
 ### Outro — Talking head (~15s)
 
-> So that's a Spring Boot app built, running, and fully debuggable — breakpoints and a live memory view, no print statements, all from VS Code. The whole project's on GitHub, linked below. Comment your favorite debugging trick. Next video's the fun one — I'll turn this app into tools GitHub Copilot can actually call.
+> In this video, I built and ran a Spring Boot app in VS Code, debugged it with breakpoints, and inspected its health and memory with Actuator. That gave me one workflow for setup, development, and runtime diagnostics. In the next video, I'll connect the app to GitHub Copilot through MCP.
 
 ---
 
@@ -59,7 +59,7 @@
 
 ### Intro — Talking head (~15s)
 
-> We've got our running Spring Boot app — all in the repo if you're just joining. Everyone's talking about giving AI agents tools, but hardly anyone exposes their own app that way. I'll turn my endpoints into MCP tools Copilot can call directly. So let's jump right in.
+> In this video, I'll turn a Spring Boot Todo app into tools GitHub Copilot can call directly. I'll use Spring AI to expose the existing Java operations through MCP, while keeping the web UI and Copilot connected to the same service. Let's jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
@@ -84,7 +84,7 @@
 
 ### Outro — Talking head (~15s)
 
-> And there it is — Copilot adding a todo by calling my own Java code, right in the web UI. One dependency, one setting. MCP docs linked below. Comment what you'd expose as a tool. Next up, I'll let Copilot test this whole flow with Playwright.
+> In this video, I exposed the Todo operations as MCP tools and connected them to GitHub Copilot. Because Copilot and the web UI shared the same Java service, changes made in chat appeared immediately in the app. In the next video, I'll test the UI in a real browser with Playwright.
 
 ---
 
@@ -92,9 +92,9 @@
 
 ### Intro — Talking head (~15s)
 
-> Last video I gave Copilot tools to drive my app through MCP — all in the repo if you missed it. UI tests are the thing everyone skips, so what if you didn't write them at all? I'll have Copilot drive a real browser with Playwright. Let's get into it.
+> In this video, I'll show how to test a Spring Boot web app with Copilot and Playwright. Passing unit tests don't prove the UI works for a real user, so I'll have Copilot drive the app in a real browser and verify the experience end to end. Let's jump right in.
 
-**Do:** End on “let's get into it,” then cut to screen share.
+**Do:** End on “let's jump right in,” then cut to screen share.
 
 ### Demo
 
@@ -122,7 +122,7 @@ MCP smoke test PASSED.
 
 ### Outro — Talking head (~15s)
 
-> So that's an end-to-end UI test I never wrote, plus a scripted MCP check — both green. The smoke-test script's in the repo. Comment if you're using Playwright with Copilot yet. Last episode, I'll hand a whole new feature to the Copilot cloud agent and let it open the PR.
+> In this video, I used Copilot and Playwright to test the Todo app in a real browser, then backed that up with automated checks across the application. That covered both the user experience and the code behind it. In the next video, I'll delegate a complete feature to the Copilot coding agent.
 
 ---
 
@@ -130,7 +130,7 @@ MCP smoke test PASSED.
 
 ### Intro — Talking head (~15s)
 
-> Last of four videos taking one Spring Boot app from empty editor to AI-ready — all in the repo if you're just joining. Here's the part most people haven't tried: handing real work to an AI agent and getting a pull request back. So let's jump right in.
+> In this video, I'll hand a complete Spring Boot feature to the GitHub Copilot coding agent and review the pull request it creates. The task spans persistence, due dates, and tests, so I can evaluate how the agent handles one clearly scoped change. Let's jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
@@ -153,9 +153,9 @@ MCP smoke test PASSED.
 
 ### Outro — Talking head (~20s)
 
-> And that's a full feature — persistence and a due-date field — delivered as a pull request I just review and merge. Over four videos we went from an empty editor to a running app, exposed it to Copilot with MCP, tested it, and let the cloud agent extend it. Want to try it? Grab the extensions, turn on Copilot and the coding agent, and clone the repo — it's all linked below. Thanks for watching.
+> In this video, I gave the Copilot coding agent a scoped feature request and reviewed the pull request it produced. The change added persistence, due dates, and tests, while I kept control of the final review and merge decision. The agent handled the implementation; I remained responsible for what shipped.
 
-**Do:** Hold on the repo URL (lower-third or on-screen text `github.com/roryp/vscode-learn`), then fade out.
+**Do:** Hold on the completed pull request, then fade out.
 
 ---
 
