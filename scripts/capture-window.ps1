@@ -21,6 +21,11 @@
     run the Copilot tool call) - the -Delay countdown gives you time to do that - but
     the capture itself is fully scripted.
 
+    PRIVACY: Before capturing, close unrelated Chat/terminal content, expand only
+    the panel needed for the demo, and hide local paths, account names, repository
+    names, notifications, and other identifying information. Review every image
+    before committing or publishing it.
+
     Examples (run from the repo root):
         # list the VS Code windows it can see (pick a title to target)
         pwsh ./scripts/capture-window.ps1 -List

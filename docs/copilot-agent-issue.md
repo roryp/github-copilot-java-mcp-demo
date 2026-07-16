@@ -1,9 +1,11 @@
 # Copilot coding agent — ready-to-assign issue
 
-> Copy everything under the line into a **new GitHub issue**, then assign it to
-> **@copilot** (or use **"Delegate to coding agent"** from the GitHub Pull
-> Requests view in VS Code). The agent will open a pull request you can review.
-> See Step 5 of the [README](../README.md) for the full workflow.
+> For a new repository or fork, copy everything under the line into a **new
+> GitHub issue**, then assign it to **@copilot** (or use **"Delegate to coding
+> agent"** from the GitHub Pull Requests view in VS Code). This requires the
+> coding agent to be enabled and write access to the repository. The recorded
+> demo already has a prepared issue and draft pull request, so do not create a
+> duplicate when recording it. See the [README](../README.md) for the workflow.
 
 ---
 
@@ -58,5 +60,5 @@ list can be filtered to "what's due".
 - `./mvnw clean package` passes.
 - `./mvnw spring-boot:run`, create a todo with a due date, restart the app, and
   confirm it is still present.
-- `scripts/mcp-smoke-test.ps1` still lists the tools (now including
-  `set_due_date`).
+- `scripts/mcp-smoke-test.ps1` passes with the exact six-tool contract:
+      `-ExpectedTools add_todo,complete_todo,delete_todo,get_todo,list_todos,set_due_date`.

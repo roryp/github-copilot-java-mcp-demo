@@ -69,17 +69,29 @@ Start the app first, then **Start** the server via the code-lens in `.vscode/mcp
 In the Chat view (Agent mode), enable the `todo-mcp` tools and ask, e.g.:
 *"Use the todo-mcp tools to add a todo called 'Email the stakeholders', then list all todos."*
 
+The **Start** action connects VS Code to the already-running HTTP endpoint; it
+does not launch the Spring Boot application.
+
 ---
 
 ## Test
 
 ```powershell
-.\mvnw.cmd test                                                       # service, web UI, and MCP context
-powershell -ExecutionPolicy Bypass -File scripts\mcp-smoke-test.ps1   # MCP handshake + tools/call (app must be running)
+.\mvnw.cmd test                                                       # service, web flow, and Spring context
+powershell -ExecutionPolicy Bypass -File scripts\mcp-smoke-test.ps1   # asserted MCP handshake, tool set, and add_todo result
 ```
+
+Keep `spring-boot:run` running in one terminal while executing the MCP smoke
+test from a second terminal. The script exits with an error unless the expected
+five tools and a valid `add_todo` result are returned.
 
 The UI exposes stable `data-testid` hooks (`new-todo-input`, `add-todo`, `todo-item`,
 `delete-todo`) so a Playwright run can drive add → complete → delete end to end.
+
+The tracked [.vscode/mcp.json](.vscode/mcp.json) also configures a verified
+release of the official Playwright MCP server through `npx`, using installed
+Microsoft Edge. It requires Node.js 18 or newer. Start the `playwright` server
+from its code-lens and approve the server/tools when VS Code prompts.
 
 ---
 
@@ -87,8 +99,12 @@ The UI exposes stable `data-testid` hooks (`new-todo-input`, `add-todo`, `todo-i
 
 Todos are kept **in memory** on purpose. A ready-to-assign issue,
 [docs/copilot-agent-issue.md](docs/copilot-agent-issue.md), asks the cloud agent to add
-Spring Data JPA + H2 persistence and a `dueDate` field. Assign it to **@copilot** (or use
-**"Delegate to coding agent"** in the GitHub Pull Requests view) and review the PR it opens.
+Spring Data JPA + H2 persistence and a `dueDate` field. This requires a GitHub
+account with Copilot coding agent enabled and write access to the repository.
+Assign it to **@copilot** (or use **"Delegate to coding agent"** in the GitHub
+Pull Requests view) before recording, let the asynchronous run finish, then
+review and test the draft PR. Keep it unmerged until the earlier demo episodes
+have been recorded so their in-memory, five-tool baseline remains reproducible.
 
 ---
 
@@ -100,4 +116,4 @@ to demo **Java** development in **VS Code** with **GitHub Copilot**:
 1. Build and debug a Spring Boot app (Extension Pack for Java, Spring Initializr, breakpoints, live memory view).
 2. Expose the endpoints to Copilot as **MCP** tools.
 3. Let Copilot test the UI end to end with **Playwright**.
-4. Hand a new feature to the **Copilot cloud agent** and merge the PR it opens.
+4. Hand a new feature to the **Copilot cloud agent**, then review and validate the draft PR it opens.
