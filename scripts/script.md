@@ -6,7 +6,7 @@
 
 ### Intro — Talking head (~15s)
 
-> In this video, I'll build and debug a Spring Boot app entirely in VS Code. I'll use Spring Initializr for scaffolding, breakpoints to inspect the code, and Actuator for live runtime insight. Let's jump right in.
+> In this video, I'll build and debug a Spring Boot app in VS Code. I'll install the Java and Spring extension packs, scaffold the app with Spring Initializr, and run it directly from the editor. Then I'll use breakpoints to step through the code and Actuator for live runtime insight. Let's jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
