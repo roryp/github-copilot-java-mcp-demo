@@ -129,7 +129,7 @@ MCP smoke test PASSED.
 
 ### Outro — Talking head (~20s)
 
-> So now I know the app doesn’t just pass tests — it actually works in the browser too. Copilot and Playwright can click through the real experience and verify what a user would see. In the next video, I’m going to hand a complete feature over to the Copilot coding agent.
+> So now I know the app doesn’t just pass tests — it actually works in the browser too. Copilot and Playwright can click through the real experience and verify what a user would see. In the next video, I’m going to hand a complete feature to the GitHub Copilot coding agent and let it work on the task in the cloud.
 
 ---
 
