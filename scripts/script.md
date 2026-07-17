@@ -50,7 +50,7 @@
 
 ### Outro — Talking head (~20s)
 
-> In this video, I built and ran a Spring Boot app in VS Code, debugged it with breakpoints, and inspected its health and memory. That gave me one workflow for setup, development, and runtime diagnostics. In the next video, I'll connect the app to GitHub Copilot through MCP.
+> So that’s a Spring Boot app built, running, and fully debuggable in VS Code. I can set breakpoints, inspect what’s happening, and keep an eye on the app while it runs. In the next video, I’ll take the same app and make it something GitHub Copilot can actually call.
 
 ---
 
@@ -86,7 +86,7 @@
 
 ### Outro — Talking head (~20s)
 
-> In this video, I exposed the Todo operations as MCP tools and connected them to GitHub Copilot. Because Copilot and the web UI shared the same Java service, changes made in chat appeared immediately in the app. In the next video, I'll test the UI in a real browser with Playwright.
+> And there it is. GitHub Copilot can now call the Todo operations directly through MCP, and because everything uses the same Java service, the changes show up in the web app straight away. Next, I’ll test the whole thing properly in a real browser with Playwright.
 
 ---
 
@@ -129,7 +129,7 @@ MCP smoke test PASSED.
 
 ### Outro — Talking head (~20s)
 
-> In this video, I used Copilot and Playwright to test my Java app in a real browser, then backed that up with automated checks across the application. That covered both the user experience and the code behind it. In the next video, I'll delegate a complete feature to the Copilot coding agent.
+> So now I know the app doesn’t just pass tests — it actually works in the browser too. Copilot and Playwright can click through the real experience and verify what a user would see. In the next video, I’m going to hand a complete feature over to the Copilot coding agent.
 
 ---
 
@@ -163,9 +163,9 @@ MCP smoke test PASSED.
 
 ![Agent pull request](../docs/images/09-agent-pr.png)
 
-### Outro — Talking head (~20s)
+### Outro — Talking head (~30s)
 
-> In this video, I gave the Copilot coding agent a scoped feature request and reviewed the pull request it produced. The change added persistence, due dates, and tests, while I kept control of the final review and merge decision. The agent handled the implementation; I remained responsible for what is approved to ship.
+> And that’s the feature done. The coding agent handled the implementation, created the tests, and opened the pull request, but I still reviewed the changes and decided what gets merged. That’s really the point: I can delegate the work without giving up control. Now I’m curious where you’d take it. What are you planning to build, and what questions do you still have? Tell me in the comments. Thanks for watching, and happy building.
 
 **Do:** Hold on the reviewed draft pull request, then fade out.
 
