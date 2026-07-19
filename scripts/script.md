@@ -58,7 +58,7 @@
 
 ### Outro — Talking head (~20s)
 
-> So that’s the full flow: start a Spring Boot project with Spring Initializr, run the finished sample, and debug it in Visual Studio Code. I can set breakpoints, inspect what’s happening, and keep an eye on the app while it runs.
+> And there it is. I installed the Java and Spring extensions, used Spring Initializr to create the starting project, cloned and ran the finished sample, then used Visual Studio Code to debug it and monitor its health and memory. That takes me from a new Java setup to understanding what a Spring Boot app is doing while it runs. What would you build first with Java and Spring Boot? Let me know in the comments. Thanks for watching, and happy building.
 
 ---
 
@@ -94,7 +94,7 @@
 
 ### Outro — Talking head (~20s)
 
-> And there it is. GitHub Copilot can now call the Todo operations directly through MCP, and because everything uses the same Java service, the changes show up in the web app straight away.
+> And there it is. I used Spring AI to expose the Todo operations as tools through the Model Context Protocol, connected those tools to GitHub Copilot in Visual Studio Code, and kept the web interface and Copilot using the same Java service. A Todo created through Copilot now appears in the web app straight away. What part of your own Java application would you turn into a Copilot tool? Let me know in the comments. Thanks for watching, and happy building.
 
 ---
 
@@ -137,7 +137,7 @@ MCP smoke test PASSED.
 
 ### Outro — Talking head (~20s)
 
-> So now I know the app doesn’t just pass tests — it actually works in the browser too. Copilot and Playwright can click through the real experience and verify what a user would see.
+> And there it is. I connected Playwright to GitHub Copilot through the Model Context Protocol and had Copilot test the Spring Boot app in a real browser. It added a Todo, completed it, deleted it, and verified each result. Combined with the unit and integration tests, that gives me confidence in both the code and the experience a user actually sees. What browser workflow would you ask Copilot to test in your own app? Let me know in the comments. Thanks for watching, and happy building.
 
 ---
 
