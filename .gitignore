@@ -11,6 +11,7 @@ target/
 
 # Demo recording artifacts and capture tooling
 scripts/Demo-Recording-Script.docx
+scripts/elgato-prompter-intros-outros.txt
 scripts/capture-initializr.ps1
 scripts/capture-window.ps1
 scripts/screenshots/
