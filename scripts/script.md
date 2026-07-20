@@ -14,19 +14,33 @@
 >
 > Spring Boot is one of the most popular Java frameworks. It handles much of the setup and configuration needed for modern applications, so developers can focus on application code instead of boilerplate.
 >
-> Whether you’re new to Java or already have some experience, the goal is to get you up and running with Java development in Visual Studio Code. In this video, I’ll install the Java and Spring tooling, use the Spring Initializr to create the app’s starting project, then run the finished sample that you can clone. Once it’s running, I’ll follow a request through the code with the debugger, then monitor the app’s health and memory. Let’s jump right in.
+> Whether you’re new to Java or already have some experience, the goal is to get you up and running with Java development in Visual Studio Code. I’ll install the Java and Spring tooling and use Spring Initializr to create a starter project. Then I’ll clone and run the finished sample, follow a request through the code with the debugger, and monitor the app’s health and memory. Let’s jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
-### Demo — Build & run
+### Demo — Set up, build & run
+
+**Before recording:** Have Java 25 installed, keep the finished sample in **File → Open Recent**, have the two Maven commands ready to paste, and prepare a browser tab for http://localhost:8080. If the extension packs are already installed, show their **Installed** state instead of changing the setup during the take.
+
+**Pacing:** Speak each line before performing its action. Leave project generation, Java import, tests, and startup logs silent.
 
 | Where | Do | Say |
 |-------|----|-----|
-| VS Code — Extensions view (`Ctrl+Shift+X`) | Search **"Extension Pack for Java"** and install. Then install a **Java Development Kit (JDK) 25** (Ctrl+Shift+P → *Java: Install New JDK*, or show it already installed). | "Let's start from nothing. First I install the Extension Pack for Java — that gives me language support, debugging, Maven, and testing in one bundle — plus a Java Development Kit, or JDK, to compile and run." |
-| Extensions view | Search **"Spring Boot Extension Pack"** (Spring Boot Tools, Dashboard, Initializr) and install. | "Next, the Spring Boot Extension Pack. This adds the Spring Initializr, the Spring Boot Dashboard, and smart editing for Spring config." |
-| Command Palette (`Ctrl+Shift+P`) | Run **"Spring Initializr: Create a Maven Project"**. Choose: Spring Boot 4.1.x → Java → group `com.example` → artifact `springboot-mcp-demo` → Java 25 → dependencies **Spring Web**, **Thymeleaf**, **Actuator**. | "The Spring Initializr creates the starting project directly in Visual Studio Code. I choose Web, Thymeleaf, and Actuator to get started." |
-| Explorer + editor | Close the temporary starting project and open the finished Todo sample. Show `TodoController`, `TodoService`, `TodoRepository`, `Todo`, and `templates/index.html`. | "To keep this focused, I'll switch to the finished Todo sample built from that starting project. The link is in the video description, so you can clone the sample and follow along." |
-| Terminal | In a dedicated terminal, run `.\mvnw.cmd spring-boot:run`, open http://localhost:8080, then add, toggle, and delete a todo. When finished, stop the app with `Ctrl+C`. | "I run it with the Maven wrapper and exercise the basic flow: add, complete, delete. Then I stop this process before launching the debugger, so only one app is using port 8080." |
+| VS Code — Extensions view (`Ctrl+Shift+X`) | Search **"Extension Pack for Java"**. Show that it is installed, or install it on a clean setup. | "First, I need the Extension Pack for Java. It adds Java language support, debugging, Maven, and testing." |
+| Command Palette (`Ctrl+Shift+P`) | Run **"Java: Install New JDK"**, briefly show the installation options, then press `Esc`. | "I already have Java 25 installed. If you need a JDK, open the Command Palette and run Java: Install New JDK." |
+| Extensions view | Search **"Spring Boot Extension Pack"**. Show that it is installed, or install it on a clean setup. | "Next, I need the Spring Boot Extension Pack. It adds Spring Initializr, the Spring Boot Dashboard, and Spring configuration support." |
+| Command Palette (`Ctrl+Shift+P`) | Run **"Spring Initializr: Create a Maven Project"** and stop at the first picker. | "With the tooling ready, I'll use Spring Initializr to generate a Maven project." |
+| Spring Initializr prompts | Choose Spring Boot 4.1.x → Java → group `com.example` → artifact `springboot-mcp-demo` → **Jar** → Java 25. | "I'll use Spring Boot 4.1 and Java 25 for this sample." |
+| Dependency picker | Add **Spring Web**, **Thymeleaf**, and **Actuator**, then continue. | "For dependencies, I'll add Spring Web for the app, Thymeleaf for the page, and Actuator for health information." |
+| Save dialog + VS Code | Choose a temporary parent folder, open the generated project when prompted, and wait for Java project import to finish. **Do not narrate while it loads.** | "That's all the setup Initializr needs. I'll generate the project and let VS Code finish loading it." |
+| Explorer + `pom.xml` | Show `pom.xml`, `src/main`, and `src/test` with one slow pass. | "The starter project is ready. The dependencies are in the pom, with source and test folders already in place." |
+| File → Open Recent | Open the prepared clone of the finished Todo sample and wait for Java project import to finish. **Do not narrate while it loads.** | "I've already cloned the finished Todo sample from the link in the description. I'll open it now so we can run the complete app." |
+| Explorer | Expand the Todo package and `templates` folder. Do not open each file yet. | "It keeps the same project structure and adds the Todo code and web page. We'll inspect the code when we debug it." |
+| Terminal | Paste `.\mvnw.cmd test`, press `Enter`, and wait for **`BUILD SUCCESS`**. **Do not narrate while the tests run.** | "Before I start the app, I'll compile the project and run its tests with the Maven wrapper." |
+| Terminal | After **`BUILD SUCCESS`**, paste `.\mvnw.cmd spring-boot:run`, press `Enter`, and wait for **`Started SpringbootMcpDemoApplication`**. **Do not narrate while the logs scroll.** | "The tests pass, so now I'll start Spring Boot." |
+| Terminal → browser | Point to the **Started** message, then open http://localhost:8080. | "The app is running on port 8080. I'll open it in the browser." |
+| Browser | Add a todo called **Prepare the demo**, mark it complete, and delete it. | "I'll add a Todo, mark it complete, and delete it. That confirms the basic flow works." |
+| Terminal | Return to the app terminal and press `Ctrl+C`. | "I'll stop this run here. Next, I'll restart the same app with the debugger attached." |
 
 **The Spring Initializr version picker:**
 
@@ -40,11 +54,13 @@
 
 | Where | Do | Say |
 |-------|----|-----|
-| Editor — `TodoController.java` | Click the gutter to set a **breakpoint** on the `addForm` method (the `service.add(title)` line). | "Let's debug. I'll drop a breakpoint where a new todo gets created." |
-| Spring Boot Dashboard / Run view | Start the app with **F5** (Debug). In the browser add a todo to hit the breakpoint. | "Launch in debug mode with F5, add a todo, and execution pauses right on our line." |
-| Debug toolbar + Variables panel | Expand **Local** and inspect `title`, then step into `TodoService.add` (`F11`). Step over the `Todo todo = ...` line (`F10`) and inspect the new `todo` local. Continue (`F5`). Before recording, close Chat and hide any terminal output that contains local paths or account details. | "The controller shows me the incoming title. I can step into the service, execute the object creation, and inspect the new Todo before it is saved." |
-| Spring Boot Dashboard → running app → **Memory** view (or Actuator) | Open the **Actuator / Memory** view; show heap/non-heap live gauges. Also hit http://localhost:8080/actuator/health. | "Because we added Actuator, VS Code gives me a live Memory view and health endpoint — real-time insight into the Java Virtual Machine while the app runs." |
-| Debug toolbar | Stop the debug session (`Shift+F5`) before ending the episode. | "I'll stop the debug session here so port 8080 is free for the next run." |
+| Editor — `TodoController.java` | Click the gutter to set a **breakpoint** on the `addForm` method (the `service.add(title)` line). | "Now that I've confirmed the app works, I want to see what happens when I click Add. I'll return to the controller and set a breakpoint where it hands the new Todo to the service." |
+| Spring Boot Dashboard / Run view | Start the app with **F5** (Debug). In the browser add a todo to hit the breakpoint. | "Because I stopped the terminal run, port 8080 is free. F5 starts the same application with the debugger attached, and submitting a Todo brings execution back to this line." |
+| Debug toolbar + Variables panel | Expand **Local** and inspect `title`, then step into `TodoService.add` (`F11`). Step over the `Todo todo = ...` line (`F10`) and inspect the new `todo` local. Before recording, close Chat and hide any terminal output that contains local paths or account details. | "The controller shows me the title that came from the form. I can step into the service, execute the object creation, and inspect the new Todo before the repository saves it." |
+| Debug toolbar + browser | Continue (`F5`) and show the new todo in the browser. Leave the debug session running. | "I'll continue the request and the browser updates with the new item. I'll keep the app running under the debugger, because the next step is to inspect its runtime health." |
+| Browser | Open http://localhost:8080/actuator/health and show the `UP` status. | "The user flow is working, and Actuator gives me a direct health check as well. This endpoint reports that the application is up and ready to serve requests." |
+| Spring Boot Dashboard → running app → **Memory** view | Open the **Memory** view and show the live heap and non-heap gauges. | "That same Actuator integration also lights up the Memory view in VS Code, where I can watch the Java Virtual Machine's heap and non-heap usage while the app runs." |
+| Debug toolbar | Stop the debug session (`Shift+F5`) before ending the episode. | "That takes me from a normal run into the code and then out to the app's runtime state. I'll stop the debug session now so port 8080 is free for the next run." |
 
 **Actuator health summary (all systems UP; local filesystem details removed):**
 
@@ -56,7 +72,7 @@
 
 ### Outro — Talking head (~20s)
 
-> And there it is. I installed the Java and Spring extensions, used the Spring Initializr to create the starting project, cloned and ran the finished sample, then used Visual Studio Code to debug it and monitor its health and memory. That takes me from a new Java setup to understanding what a Spring Boot app is doing while it runs. What would you build first with Java and Spring Boot? Let me know in the comments. Thanks for watching, and happy building.
+> And there it is. I installed the Java and Spring extensions and used Spring Initializr to create a starter project. Then I cloned and ran the finished sample, followed a request through the code with the debugger, and monitored the app’s health and memory. That took me from a new Java setup to understanding what a Spring Boot app is doing while it runs. What would you build first with Java and Spring Boot? Let me know in the comments. Thanks for watching, and happy building.
 
 ---
 
