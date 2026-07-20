@@ -16,8 +16,6 @@
 >
 > Whether you’re new to Java or already have some experience, the goal is to get you up and running with Java development in Visual Studio Code. In this video, I’ll install the Java and Spring tooling, use Spring Initializr to create the app’s starting project, then run the finished sample that you can clone. I’ll debug it and monitor its health and memory. Let’s jump right in.
 
-**B-roll for Doug:** [dev.java](https://dev.java/), [Spring Boot](https://spring.io/projects/spring-boot), and [Spring Initializr](https://start.spring.io/). Useful visuals include Java code in Visual Studio Code, Java and Spring branding, an application-to-cloud diagram, the Initializr dependency picker, and the finished sample repository page.
-
 **Do:** End on “let's jump right in,” then cut to screen share.
 
 ### Demo — Build & run
