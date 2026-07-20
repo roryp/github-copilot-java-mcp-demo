@@ -14,7 +14,7 @@
 >
 > Spring Boot is one of the most popular Java frameworks. It handles much of the setup and configuration needed for modern applications, so developers can focus on application code instead of boilerplate.
 >
-> Whether you’re new to Java or already have some experience, the goal is to get you up and running with Java development in Visual Studio Code. In this video, I’ll install the Java and Spring tooling, use Spring Initializr to create the app’s starting project, then run the finished sample that you can clone. I’ll debug it and monitor its health and memory. Let’s jump right in.
+> Whether you’re new to Java or already have some experience, the goal is to get you up and running with Java development in Visual Studio Code. In this video, I’ll install the Java and Spring tooling, use the Spring Initializr to create the app’s starting project, then run the finished sample that you can clone. Once it’s running, I’ll follow a request through the code with the debugger, then monitor the app’s health and memory. Let’s jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
@@ -24,7 +24,7 @@
 |-------|----|-----|
 | VS Code — Extensions view (`Ctrl+Shift+X`) | Search **"Extension Pack for Java"** and install. Then install a **Java Development Kit (JDK) 25** (Ctrl+Shift+P → *Java: Install New JDK*, or show it already installed). | "Let's start from nothing. First I install the Extension Pack for Java — that gives me language support, debugging, Maven, and testing in one bundle — plus a Java Development Kit, or JDK, to compile and run." |
 | Extensions view | Search **"Spring Boot Extension Pack"** (Spring Boot Tools, Dashboard, Initializr) and install. | "Next, the Spring Boot Extension Pack. This adds the Spring Initializr, the Spring Boot Dashboard, and smart editing for Spring config." |
-| Command Palette (`Ctrl+Shift+P`) | Run **"Spring Initializr: Create a Maven Project"**. Choose: Spring Boot 4.1.x → Java → group `com.example` → artifact `springboot-mcp-demo` → Java 25 → dependencies **Spring Web**, **Thymeleaf**, **Actuator**. | "Spring Initializr creates the starting project directly in Visual Studio Code. I choose Web, Thymeleaf, and Actuator to get started." |
+| Command Palette (`Ctrl+Shift+P`) | Run **"Spring Initializr: Create a Maven Project"**. Choose: Spring Boot 4.1.x → Java → group `com.example` → artifact `springboot-mcp-demo` → Java 25 → dependencies **Spring Web**, **Thymeleaf**, **Actuator**. | "The Spring Initializr creates the starting project directly in Visual Studio Code. I choose Web, Thymeleaf, and Actuator to get started." |
 | Explorer + editor | Close the temporary starting project and open the finished Todo sample. Show `TodoController`, `TodoService`, `TodoRepository`, `Todo`, and `templates/index.html`. | "To keep this focused, I'll switch to the finished Todo sample built from that starting project. The link is in the video description, so you can clone the sample and follow along." |
 | Terminal | In a dedicated terminal, run `.\mvnw.cmd spring-boot:run`, open http://localhost:8080, then add, toggle, and delete a todo. When finished, stop the app with `Ctrl+C`. | "I run it with the Maven wrapper and exercise the basic flow: add, complete, delete. Then I stop this process before launching the debugger, so only one app is using port 8080." |
 
@@ -56,7 +56,7 @@
 
 ### Outro — Talking head (~20s)
 
-> And there it is. I installed the Java and Spring extensions, used Spring Initializr to create the starting project, cloned and ran the finished sample, then used Visual Studio Code to debug it and monitor its health and memory. That takes me from a new Java setup to understanding what a Spring Boot app is doing while it runs. What would you build first with Java and Spring Boot? Let me know in the comments. Thanks for watching, and happy building.
+> And there it is. I installed the Java and Spring extensions, used the Spring Initializr to create the starting project, cloned and ran the finished sample, then used Visual Studio Code to debug it and monitor its health and memory. That takes me from a new Java setup to understanding what a Spring Boot app is doing while it runs. What would you build first with Java and Spring Boot? Let me know in the comments. Thanks for watching, and happy building.
 
 ---
 
