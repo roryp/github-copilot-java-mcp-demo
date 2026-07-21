@@ -61,14 +61,14 @@
 | Debug toolbar + Variables panel | Expand **Local** and inspect `title`, then step into `TodoService.add` (`F11`). Step over the `Todo todo = ...` line (`F10`) and inspect the new `todo` local. Before recording, close Chat and hide any terminal output that contains local paths or account details. | "The controller shows me the title that came from the form. I can step into the service, execute the object creation, and inspect the new Todo before the repository saves it." |
 | Debug toolbar + browser | Continue (`F5`) and show the new todo in the browser. Leave the debug session running. | "I'll continue the request and the browser updates with the new item. I'll keep the app running under the debugger, because the next step is to inspect its runtime health." |
 | Browser | Open http://localhost:8080/actuator/health and show the `UP` status. | "The user flow is working, and Actuator gives me a direct health check as well. This endpoint reports that the application is up and ready to serve requests." |
-| Spring Boot Dashboard → running app → **Memory** view | Open the **Memory** view and show the live heap and non-heap gauges. | "That same Actuator integration also lights up the Memory view in VS Code, where I can watch the Java Virtual Machine's heap and non-heap usage while the app runs." |
+| Spring Boot Dashboard → running app → **Memory** view | Open the **Memory** view and show the live memory information. | "That same Actuator integration also lights up the Memory view in VS Code, where I can watch the application's memory usage while it runs." |
 | Debug toolbar | Stop the debug session (`Shift+F5`) before ending the episode. | "That takes me from a normal run into the code and then out to the app's runtime state. I'll stop the debug session now so port 8080 is free for the next run." |
 
 **Actuator health summary (all systems UP; local filesystem details removed):**
 
 ![Actuator health](../docs/images/02-actuator-health.png)
 
-**Spring Boot Dashboard Memory view — live heap gauge:**
+**Spring Boot Dashboard Memory view:**
 
 ![Memory view](../docs/images/05-memory-view.png)
 
