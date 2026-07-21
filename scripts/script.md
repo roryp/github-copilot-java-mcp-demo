@@ -20,9 +20,9 @@
 
 ### Demo — Set up, build & run
 
-**Before recording:** Have Java 25 installed, open the completed sample in VS Code, have the two Maven commands ready to paste, and prepare a browser tab for http://localhost:8080. If the extension packs are already installed, show their **Installed** state instead of changing the setup during the take.
+**Before recording:** Have Java 25 installed, open the completed sample in VS Code, make sure the Maven Explorer and Spring Boot Dashboard views are available, and prepare a browser tab for http://localhost:8080. If the extension packs are already installed, show their **Installed** state instead of changing the setup during the take.
 
-**Pacing:** Speak each line before performing its action. Leave Java import, tests, and startup logs silent.
+**Pacing:** Speak each line before performing its action. Leave Java import, the Maven build, and application startup silent.
 
 | Where | Do | Say |
 |-------|----|-----|
@@ -36,11 +36,11 @@
 | `SpringbootMcpDemoApplication.java` | Show `main` and `@SpringBootApplication`. | "This is the entry point. Spring Boot starts the application, finds the Spring classes in this package, creates them, and wires their dependencies together." |
 | `Todo.java` → `TodoRepository.java` → `TodoService.java` | Briefly show each class and its annotation or constructor. | "The model defines a Todo. The repository stores Todos in memory, and the service holds the application operations. Spring injects the repository into the service through its constructor." |
 | `templates/index.html` → `TodoController.java` | Show the add form action, then the matching controller method and its service call. | "The frontend submits forms to the web controller. The controller calls the service, then reloads the page with the latest Todos for Thymeleaf to render." |
-| Terminal | Paste `.\mvnw.cmd test`, press `Enter`, and wait for **`BUILD SUCCESS`**. **Do not narrate while the tests run.** | "Before I start the app, I'll compile the project and run its tests with the Maven wrapper." |
-| Terminal | After **`BUILD SUCCESS`**, paste `.\mvnw.cmd spring-boot:run`, press `Enter`, and wait for **`Started SpringbootMcpDemoApplication`**. Non-fatal Spring AI `BeanPostProcessorChecker` warnings may appear first. **Do not narrate while the logs scroll.** | "The tests pass, so now I'll start Spring Boot." |
-| Terminal → browser | Point to the **Started** message, then open http://localhost:8080. | "The app is running on port 8080. I'll open it in the browser." |
+| Maven Explorer | Expand **springboot-mcp-demo → Lifecycle**, run **package**, and wait for **`BUILD SUCCESS`** in the Maven output. **Do not narrate while Maven builds and runs the tests.** | "Before I start the app, I'll use Maven Explorer to compile the project, run its tests, and package it." |
+| Spring Boot Dashboard | Find **springboot-mcp-demo**, select its **Run** action, and wait for the app to show as running. **Do not narrate while it starts.** | "The build passes, so now I'll start the application from the Spring Boot Dashboard." |
+| Spring Boot Dashboard → browser | Point to the running app in the Dashboard, then open http://localhost:8080. | "The Dashboard shows the app running on port 8080. I'll open it in the browser." |
 | Browser | Add a todo called **Prepare the demo**, mark it complete, and delete it. | "I'll add a Todo, mark it complete, and delete it. That confirms the basic flow works." |
-| Terminal | Return to the app terminal and press `Ctrl+C`. | "I'll stop this run here. Next, I'll restart the same app with the debugger attached." |
+| Spring Boot Dashboard | Use the app's **Stop** action. | "I'll stop this run here. Next, I'll restart the same app with the debugger attached." |
 
 **The Spring Initializr version picker:**
 
@@ -55,7 +55,7 @@
 | Where | Do | Say |
 |-------|----|-----|
 | Editor — `TodoController.java` | Click the gutter to set a **breakpoint** on the `addForm` method (the `service.add(title)` line). | "Now that I've confirmed the app works, I want to see what happens when I click Add. I'll return to the controller and set a breakpoint where it hands the new Todo to the service." |
-| Spring Boot Dashboard | Use the app's **Debug** action and wait for it to start. | "Because I stopped the terminal run, port 8080 is free. The Dashboard can launch the same application with the debugger attached." |
+| Spring Boot Dashboard | Use the app's **Debug** action and wait for it to start. | "Because I stopped the normal run, port 8080 is free. The Dashboard can launch the same application with the debugger attached." |
 | Spring Boot Dashboard → `TodoController.java` | Wait for the live connection, then show the running status and controls. Point out **Beans**, **Endpoint Mappings**, **Properties**, and **Memory**, then the gray URL hints above the controller mappings. | "The Dashboard now exposes live beans, endpoint mappings, properties, and memory. Spring Tools also adds gray, clickable URLs beside the controller mappings." |
 | Editor → browser | Click the root URL, then add a todo to hit the breakpoint. | "I'll use the root URL to open the app. Submitting a Todo brings execution back to the breakpoint." |
 | Debug toolbar + Variables panel | Expand **Local** and inspect `title`, then step into `TodoService.add` (`F11`). Step over the `Todo todo = ...` line (`F10`) and inspect the new `todo` local. Before recording, close Chat and hide any terminal output that contains local paths or account details. | "The controller shows me the title that came from the form. I can step into the service, execute the object creation, and inspect the new Todo before the repository saves it." |
