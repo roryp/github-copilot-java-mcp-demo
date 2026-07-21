@@ -20,22 +20,19 @@
 
 ### Demo — Set up, build & run
 
-**Before recording:** Have Java 25 installed, keep the finished sample in **File → Open Recent**, have the two Maven commands ready to paste, and prepare a browser tab for http://localhost:8080. If the extension packs are already installed, show their **Installed** state instead of changing the setup during the take.
+**Before recording:** Have Java 25 installed, open the completed sample in VS Code, have the two Maven commands ready to paste, and prepare a browser tab for http://localhost:8080. If the extension packs are already installed, show their **Installed** state instead of changing the setup during the take.
 
-**Pacing:** Speak each line before performing its action. Leave project generation, Java import, tests, and startup logs silent.
+**Pacing:** Speak each line before performing its action. Leave Java import, tests, and startup logs silent.
 
 | Where | Do | Say |
 |-------|----|-----|
 | VS Code — Extensions view (`Ctrl+Shift+X`) | Search **"Extension Pack for Java"**. Show that it is installed, or install it on a clean setup. | "First, I need to install the Extension Pack for Java. It adds Java language support, debugging, Maven, and testing." |
 | Command Palette (`Ctrl+Shift+P`) | Run **"Java: Install New JDK"**, briefly show the installation options, then press `Esc`. | "I already have Java 25 installed. If you need a JDK, open the Command Palette and run Java: Install New JDK." |
 | Extensions view | Search **"Spring Boot Extension Pack"**. Show that it is installed, or install it on a clean setup. | "Next, I'll install the Spring Boot Extension Pack. It adds Spring Initializr, the Spring Boot Dashboard, and Spring configuration support." |
-| Command Palette (`Ctrl+Shift+P`) | Run **"Spring Initializr: Create a Maven Project"** and stop at the first picker. | "With the tooling ready, I'll use Spring Initializr to generate a Maven project." |
+| Command Palette (`Ctrl+Shift+P`) | Run **"Spring Initializr: Create a Maven Project"** and stop at the first picker. | "With the tooling ready, I'll use Spring Initializr to show how I created this Maven project." |
 | Spring Initializr prompts | Choose Spring Boot 4.1.0 → Java → group `com.example` → artifact `springboot-mcp-demo` → **Jar** → Java 25. | "I'll use Spring Boot 4.1 and Java 25 for this sample." |
-| Dependency picker | Add **Spring Web**, **Thymeleaf**, and **Actuator**, then continue. | "For dependencies, I'll add Spring Web for the app, Thymeleaf for the page, and Actuator for health information." |
-| Save dialog + VS Code | Choose a temporary parent folder, open the generated project when prompted, and wait for Java project import to finish. **Do not narrate while it loads.** | "That's all the setup Initializr needs. I'll generate the project and let VS Code finish loading it." |
-| Explorer + `pom.xml` | Show `pom.xml`, `src/main`, and `src/test` with one slow pass. | "The starter project is ready. The dependencies are in the pom, with source and test folders already in place." |
-| File → Open Recent | Open the prepared clone of the finished sample and wait for Java project import to finish. **Do not narrate while it loads.** | "I've already cloned the finished sample from the link in the description. I'll open it now so we can run the complete app." |
-| Explorer | Expand the Todo package and `templates` folder. | "It keeps the same project structure and adds the Todo code and web page." |
+| Dependency picker | Add **Spring Web**, **Thymeleaf**, **Actuator**, and **Model Context Protocol Server**. Pause with all four selected, then press `Esc` to cancel the wizard before it generates a project. | "These are the dependencies I used to create the sample: Spring Web, Thymeleaf, Actuator, and the MCP server starter that I'll use later in this series. At this point, Initializr has everything it needs." |
+| Explorer | With the wizard closed, expand the Todo package and `templates` folder in the workspace already on screen. | "I've cloned the completed sample from the link in the description ahead of time, and it's already open here in VS Code. It follows the structure Initializr set up and adds the Todo code and web page." |
 | `SpringbootMcpDemoApplication.java` | Show `main` and `@SpringBootApplication`. | "This is the entry point. Spring Boot starts the application, finds the Spring classes in this package, creates them, and wires their dependencies together." |
 | `Todo.java` → `TodoRepository.java` → `TodoService.java` | Briefly show each class and its annotation or constructor. | "The model defines a Todo. The repository stores Todos in memory, and the service holds the application operations. Spring injects the repository into the service through its constructor." |
 | `templates/index.html` → `TodoController.java` | Show the add form action, then the matching controller method and its service call. | "The frontend submits forms to the web controller. The controller calls the service, then reloads the page with the latest Todos for Thymeleaf to render." |
