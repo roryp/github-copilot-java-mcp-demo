@@ -1,21 +1,24 @@
-# Polish the Todo page with a stylesheet
+# Install the supplied Todo stylesheet
 
-The Todo app works, but the page still uses the browser's default styling. Add
-a small stylesheet that makes it cleaner and easier to use without changing how
-the app works.
+The finished design is provided in `docs/styles.css`. Install that exact
+stylesheet in the application without changing its contents or the app's
+behavior.
 
 ## Requirements
 
-- Add `src/main/resources/static/styles.css` and link it from the Thymeleaf
-  template.
-- Use a centered, responsive layout with clear spacing and readable typography.
-- Style the text input, Add and Delete buttons, and Todo rows.
-- Make completed Todos visually distinct with muted, struck-through text.
+- Copy `docs/styles.css` unchanged to
+  `src/main/resources/static/styles.css`.
+- Add `<link rel="stylesheet" th:href="@{/styles.css}" />` immediately after the
+  favicon link in `src/main/resources/templates/index.html`.
+- Do not redesign, rewrite, or reformat the CSS.
+- Do not modify the source file in `docs`.
 - Preserve the existing routes, form behavior, accessibility labels, and
   `data-testid` attributes.
-- Do not add JavaScript or a frontend dependency.
+- Do not add JavaScript or dependencies.
 
 ## Done when
 
-- The page is clearly styled at desktop and narrow widths.
+- `src/main/resources/static/styles.css` is byte-for-byte identical to
+  `docs/styles.css`.
 - Adding, completing, and deleting a Todo still works.
+- The existing tests pass.
