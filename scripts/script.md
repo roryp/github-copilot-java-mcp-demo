@@ -14,19 +14,33 @@
 >
 > Spring Boot is one of the most popular Java frameworks. It handles much of the setup and configuration needed for modern applications, so developers can focus on application code instead of boilerplate.
 >
-> Whether you’re new to Java or already have some experience, the goal is to get you up and running with Java development in Visual Studio Code. In this video, I’ll install the Java and Spring tooling, use Spring Initializr to create the app’s starting project, then run the finished sample that you can clone. I’ll debug it and monitor its health and memory. Let’s jump right in.
+> Whether you’re new to Java or already have some experience, the goal is to get you up and running with Java development in Visual Studio Code. I’ll set up the Java and Spring tooling and use Spring Initializr to retrace how the starter project was configured. Then I’ll explore and run the finished sample, follow a request through the code with the debugger, and monitor the app’s health and memory. Let’s jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
-### Demo — Build & run
+### Demo — Set up, build & run
+
+**Before recording:** Have Java 25 installed, open the completed sample in VS Code, make sure the Maven Explorer and Spring Boot Dashboard views are available, and prepare a browser tab for http://localhost:8080. If the extension packs are already installed, show their **Installed** state instead of changing the setup during the take.
+
+**Pacing:** Speak each line before performing its action. Leave Java import, the Maven build, and application startup silent.
 
 | Where | Do | Say |
 |-------|----|-----|
-| VS Code — Extensions view (`Ctrl+Shift+X`) | Search **"Extension Pack for Java"** and install. Then install a **Java Development Kit (JDK) 25** (Ctrl+Shift+P → *Java: Install New JDK*, or show it already installed). | "Let's start from nothing. First I install the Extension Pack for Java — that gives me language support, debugging, Maven, and testing in one bundle — plus a Java Development Kit, or JDK, to compile and run." |
-| Extensions view | Search **"Spring Boot Extension Pack"** (Spring Boot Tools, Dashboard, Initializr) and install. | "Next, the Spring Boot Extension Pack. This adds the Spring Initializr, the Spring Boot Dashboard, and smart editing for Spring config." |
-| Command Palette (`Ctrl+Shift+P`) | Run **"Spring Initializr: Create a Maven Project"**. Choose: Spring Boot 4.1.x → Java → group `com.example` → artifact `springboot-mcp-demo` → Java 25 → dependencies **Spring Web**, **Thymeleaf**, **Actuator**. | "Spring Initializr creates the starting project directly in Visual Studio Code. I choose Web, Thymeleaf, and Actuator to get started." |
-| Explorer + editor | Close the temporary starting project and open the finished Todo sample. Show `TodoController`, `TodoService`, `TodoRepository`, `Todo`, and `templates/index.html`. | "To keep this focused, I'll switch to the finished Todo sample built from that starting project. You can clone the sample and follow along." |
-| Terminal | In a dedicated terminal, run `.\mvnw.cmd spring-boot:run`, open http://localhost:8080, then add, toggle, and delete a todo. When finished, stop the app with `Ctrl+C`. | "I run it with the Maven wrapper and exercise the basic flow: add, complete, delete. Then I stop this process before launching the debugger, so only one app is using port 8080." |
+| VS Code — Extensions view (`Ctrl+Shift+X`) | Search **"Extension Pack for Java"**. Show that it is installed, or install it on a clean setup. | "I'll start by making sure VS Code has the Java tooling I need. The Extension Pack for Java adds language support, debugging, Maven, and testing." |
+| Command Palette (`Ctrl+Shift+P`) | Run **"Java: Install New JDK"**, briefly show the installation options, then press `Esc`. | "That tooling still needs a JDK. I already have Java 25 installed, but if you don't, open the Command Palette and run Java: Install New JDK." |
+| Extensions view | Search **"Spring Boot Extension Pack"**. Show that it is installed, or install it on a clean setup. | "With Java in place, I'll make sure the Spring Boot Extension Pack is installed. It brings in Spring Initializr, the Spring Boot Dashboard, and Spring configuration support." |
+| Command Palette (`Ctrl+Shift+P`) | Run **"Spring Initializr: Create a Maven Project"** and stop at the first picker. | "Now that the tooling is ready, I'll open Spring Initializr and retrace how I created this Maven project." |
+| Spring Initializr prompts | Choose Spring Boot 4.1.0 → Java → group `com.example` → artifact `springboot-mcp-demo` → **Jar** → Java 25. | "For the project itself, I'll choose Spring Boot 4.1 and Java 25." |
+| Dependency picker | Add **Spring Web**, **Thymeleaf**, **Actuator**, and **Model Context Protocol Server**. Pause with all four selected, then press `Esc` to cancel the wizard before it generates a project. | "Then I'll add Spring Web, Thymeleaf, Actuator, and Model Context Protocol Server. Together they cover the web page, runtime insights, and MCP support, and Initializr now has everything it needs." |
+| Explorer | With the wizard closed, expand the Todo package and `templates` folder in the workspace already on screen. | "Rather than generate a second copy, I'll return to the completed sample I cloned ahead of time. It keeps the structure Initializr created and adds the Todo code and web page." |
+| `SpringbootMcpDemoApplication.java` | Show `main` and `@SpringBootApplication`. | "I'll begin with the entry point. Spring Boot starts here, finds the Spring classes in this package, creates them, and wires their dependencies together." |
+| `Todo.java` → `TodoRepository.java` → `TodoService.java` | Briefly show each class and its annotation or constructor. | "From that entry point, the application is organized into a few small pieces. The model defines a Todo, and the repository stores Todos in memory. The service provides the application operations, with Spring injecting the repository through its constructor." |
+| `templates/index.html` → `TodoController.java` | Show the add form action, then the matching controller method and its service call. | "That service connects the page to the application logic. The frontend submits a form to the controller, the controller calls the service, and Thymeleaf renders the updated list when the page reloads." |
+| Maven Explorer | Expand **springboot-mcp-demo → Lifecycle**, run **package**, and wait for **`BUILD SUCCESS`** in the Maven output. **Do not narrate while Maven builds and runs the tests.** | "Now that I've followed the main request path, I'll use Maven Explorer to compile the project, run its tests, and package it." |
+| Spring Boot Dashboard | Find **springboot-mcp-demo**, select its **Run** action, and wait for the app to show as running. **Do not narrate while it starts.** | "With the build complete, I'll start the application from the Spring Boot Dashboard." |
+| Spring Boot Dashboard → browser | Point to the running app in the Dashboard, then open http://localhost:8080. | "Once startup finishes, the Dashboard shows the app running on port 8080, so I'll open it in the browser." |
+| Browser | Add a todo called **Prepare the demo**, mark it complete, and delete it. | "Here I'll add a Todo, mark it complete, and delete it to exercise the full flow I just traced through the code." |
+| Spring Boot Dashboard | Use the app's **Stop** action. | "The basic flow works. I'll stop this run so I can restart the same application with the debugger attached." |
 
 **The Spring Initializr version picker:**
 
@@ -40,23 +54,27 @@
 
 | Where | Do | Say |
 |-------|----|-----|
-| Editor — `TodoController.java` | Click the gutter to set a **breakpoint** on the `addForm` method (the `service.add(title)` line). | "Let's debug. I'll drop a breakpoint where a new todo gets created." |
-| Spring Boot Dashboard / Run view | Start the app with **F5** (Debug). In the browser add a todo to hit the breakpoint. | "Launch in debug mode with F5, add a todo, and execution pauses right on our line." |
-| Debug toolbar + Variables panel | Expand **Local** and inspect `title`, then step into `TodoService.add` (`F11`). Step over the `Todo todo = ...` line (`F10`) and inspect the new `todo` local. Continue (`F5`). Before recording, close Chat and hide any terminal output that contains local paths or account details. | "The controller shows me the incoming title. I can step into the service, execute the object creation, and inspect the new Todo before it is saved." |
-| Spring Boot Dashboard → running app → **Memory** view (or Actuator) | Open the **Actuator / Memory** view; show heap/non-heap live gauges. Also hit http://localhost:8080/actuator/health. | "Because we added Actuator, VS Code gives me a live Memory view and health endpoint — real-time insight into the Java Virtual Machine while the app runs." |
-| Debug toolbar | Stop the debug session (`Shift+F5`) before ending the episode. | "I'll stop the debug session here so port 8080 is free for the next run." |
+| Editor — `TodoController.java` | Click the gutter to set a **breakpoint** on the `addForm` method (the `service.add(title)` line). | "Before I restart the app, I'll return to the controller and set a breakpoint where the form submission passes the title to the service. That gives me a precise place to pause the next request." |
+| Spring Boot Dashboard | Use the app's **Debug** action and wait for it to start. | "With the breakpoint in place, I'll launch the same application from the Dashboard with the debugger attached. Because the normal run is stopped, it can use port 8080 again." |
+| Spring Boot Dashboard → `TodoController.java` | Wait for the live connection, then show the running status and controls. Point out **Beans**, **Endpoint Mappings**, **Properties**, and **Memory**, then the gray URL hints above the controller mappings. | "Once the debugger connects, the Dashboard exposes a live view of the application's beans, endpoint mappings, properties, and memory. In the editor, Spring Tools also turns the controller mappings into clickable URL hints." |
+| Editor → browser | Click the root URL, then add a todo to hit the breakpoint. | "Those URL hints connect the code to the running routes. I'll open the root page from the controller, submit another Todo, and let the breakpoint catch that request." |
+| Debug toolbar + Variables panel | Expand **Local** and inspect `title`, then step into `TodoService.add` (`F11`). Step over the `Todo todo = ...` line (`F10`) and inspect the new `todo` local. Before recording, close Chat and hide any terminal output that contains local paths or account details. | "When the request pauses, I can inspect the title exactly as the controller received it. Then I'll step into the service, run the line that creates the Todo, and inspect the object before it reaches the repository." |
+| Debug toolbar + browser | Continue (`F5`) and show the new todo in the browser. Leave the debug session running. | "Now I've followed the request from the form into the service and watched the Todo object get created. I'll continue so the repository can save it, the controller can redirect, and the browser can render the updated list. I'll leave the debugger attached for the runtime checks." |
+| Browser | Open http://localhost:8080/actuator/health and show the `UP` status. | "That completes the request path from browser input to rendered output. With the app still running, I'll check its runtime state next, starting with the Actuator health endpoint. A status of UP confirms that the application is healthy." |
+| Spring Boot Dashboard → running app → **Memory** view | Open the **Memory** view and show the live memory information. | "Actuator gives me a point-in-time health check. For a live view, I'll return to the Dashboard and open Memory, where I can watch the application's memory use without stopping the debug session." |
+| Debug toolbar | Stop the debug session (`Shift+F5`) before ending the episode. | "With the request traced and the runtime checks complete, I'll stop the debugger here. That closes the application and leaves port 8080 free." |
 
 **Actuator health summary (all systems UP; local filesystem details removed):**
 
 ![Actuator health](../docs/images/02-actuator-health.png)
 
-**Spring Boot Dashboard Memory view — live heap gauge:**
+**Spring Boot Dashboard Memory view:**
 
 ![Memory view](../docs/images/05-memory-view.png)
 
 ### Outro — Talking head (~20s)
 
-> And there it is. I installed the Java and Spring extensions, used Spring Initializr to create the starting project, cloned and ran the finished sample, then used Visual Studio Code to debug it and monitor its health and memory. That takes me from a new Java setup to understanding what a Spring Boot app is doing while it runs. What would you build first with Java and Spring Boot? Let me know in the comments. Thanks for watching, and happy building.
+> And there it is. I set up the Java and Spring extensions and used Spring Initializr to retrace the starter configuration. Then I explored and ran the finished sample, followed a request through the code with the debugger, and monitored the app’s health and memory. That took me from a new Java setup to understanding what a Spring Boot app is doing while it runs. What would you build first with Java and Spring Boot? Let me know in the comments. Thanks for watching, and happy building.
 
 ---
 
@@ -74,13 +92,13 @@
 
 | Where | Do | Say |
 |-------|----|-----|
-| `pom.xml` | Show the dependency **`spring-ai-starter-mcp-server-webmvc`** and the `spring-ai-bom` 2.0.0. | "The MCP layer starts with the Spring AI MCP server dependency, with its version managed by the Spring AI Bill of Materials." |
-| `mcp/TodoTools.java` | Walk through the `@McpTool` / `@McpToolParam` annotations on `addTodo`, `listTodos`, etc. Point out they just delegate to `TodoService`. | "Each method gets an `@McpTool` annotation with a name and description. They reuse the exact same service the web interface uses — no duplicated logic. Five tools: list, get, add, complete, delete." |
-| `application.properties` | Highlight `spring.ai.mcp.server.protocol=STREAMABLE`. | "One critical setting: `protocol=STREAMABLE`. The Spring web starter defaults to the older Server-Sent Events transport — without this, `/mcp` returns 404." |
-| Terminal | In a dedicated terminal, run `.\mvnw.cmd spring-boot:run` and wait for **`Registered tools: 5`**. Leave this terminal running. | "The startup log confirms that all five tools are registered and the app is serving the MCP endpoint." |
-| `.vscode/mcp.json` | Show the `todo-mcp` entry for the running web endpoint. After the app is running, click its **Start** code-lens and approve the connection if prompted. | "This entry points VS Code at the running `/mcp` endpoint. Starting it here connects Copilot to the server; it does not launch the Java app itself." |
-| Copilot Chat (Agent mode) | Enable the `todo-mcp` tools. Ask: *"Use the todo-mcp tools to add a todo called 'Email the stakeholders', then list all todos."* Refresh http://localhost:8080 and verify that exact title appears. | "Now I ask Copilot to add a todo and list the results. The tool call reaches the same Java service as the web interface, so the exact item created in chat appears in the browser." |
-| Terminal | Stop the Spring Boot app with `Ctrl+C` after capturing the result. | "I'll stop the app here. Because the store is in memory, stopping it also clears the data." |
+| `pom.xml` | Show the dependency **`spring-ai-starter-mcp-server-webmvc`** and the `spring-ai-bom` 2.0.0. | "The Todo app already has the operations I want Copilot to use. To expose them through MCP, I'll start with Spring AI's WebMVC MCP server starter. The Spring AI Bill of Materials manages the dependency version, which is 2.0.0 here." |
+| `mcp/TodoTools.java` | Walk through the `@McpTool` / `@McpToolParam` annotations on `addTodo`, `listTodos`, etc. Point out they just delegate to `TodoService`. | "With the server support in place, this class defines what Copilot can call. Each `@McpTool` supplies a name and description, while `@McpToolParam` describes the required input. Together, the five methods let Copilot list, get, add, complete, and delete Todos. Every method delegates to the same Todo service the web interface uses." |
+| `application.properties` | Highlight `spring.ai.mcp.server.protocol=STREAMABLE`. | "Those annotations define the tools. Next, the application needs to expose them over the transport VS Code will use. Setting the protocol to STREAMABLE creates the modern Streamable HTTP endpoint at `/mcp`. Without this setting, the starter uses its older Server-Sent Events transport and `/mcp` is not available." |
+| Terminal | In a dedicated terminal, run `.\mvnw.cmd spring-boot:run` and wait for **`Registered tools: 5`**. Leave this terminal running. | "Now that the tools and transport are configured, I'll start the application. During startup, Spring discovers the annotated methods, and `Registered tools: 5` confirms that the complete tool set is available." |
+| `.vscode/mcp.json` | Show the `todo-mcp` entry for the running web endpoint. After the app is running, click its **Start** code-lens and approve the connection if prompted. | "The Java server is ready, but VS Code still needs its address. This `todo-mcp` entry points to the running `/mcp` endpoint. Starting the entry connects VS Code to the server and discovers its tools; it does not start the Java application." |
+| Copilot Chat (Agent mode) | Enable the `todo-mcp` tools. Ask: *"Use the todo-mcp tools to add a todo called 'Email the stakeholders', then list all todos."* Refresh http://localhost:8080 and verify that exact title appears. | "With those tools discovered and enabled, I'll ask Copilot to add a Todo and then list the results. Copilot calls the MCP tools, which delegate to the Todo service. When I refresh the web page, the same title appears because both interfaces use the same service and in-memory repository." |
+| Terminal / `.vscode/mcp.json` | After capturing the result, stop the Spring Boot app with `Ctrl+C`, then stop the `todo-mcp` connection. | "That matching item confirms that Copilot and the web page are working with the same application state. I'll stop the server, which clears its in-memory data, and close the MCP connection so the workspace returns to a clean state." |
 
 **Proof it works — a todo created *through MCP* appears in the web interface** (last row):
 
@@ -104,30 +122,19 @@
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
-**Prerequisites:** Install Node.js 18 or newer, use an installed Edge browser, sign in to GitHub Copilot Chat, and approve the Playwright MCP server and its tools when prompted.
+**Prerequisites:** Use a current version of VS Code, sign in to GitHub Copilot Chat, and allow MCP server installation and tool use when prompted.
 
 ### Demo
 
 | Where | Do | Say |
 |-------|----|-----|
-| `.vscode/mcp.json` | Show the `playwright` server entry, which runs `@playwright/mcp` through `npx` with Microsoft Edge. Click its **Start** code-lens. | "The workspace includes the Playwright MCP server configuration. It uses the installed Edge browser, so I don't need a separate browser download." |
-| Terminal 1 | Run `.\mvnw.cmd spring-boot:run` and leave the app running on http://localhost:8080. | "I start the app in its own terminal and leave it running while the browser and protocol checks execute." |
-| `templates/index.html` | Point out the `data-testid` hooks: `new-todo-input`, `add-todo`, `todo-item`, `delete-todo`. | "I added stable test identifiers to the page so automation has reliable selectors." |
-| Copilot Chat (Agent mode, Playwright MCP) | Ask: *"Use the Playwright tools to open http://localhost:8080. Add a todo called 'Verify the browser flow', find that todo's row, complete it and verify it is checked, then delete it and verify it is gone."* | "Using the Playwright tools, Copilot drives a real browser through one deterministic user journey and verifies the result at each stage." |
-| Browser window (Playwright) | Watch the automated browser perform the add → complete → delete flow. | "There it goes: filling the input, clicking add, toggling, deleting — a full browser smoke test." |
-| Terminal 2 | While the app remains running in Terminal 1, run `powershell -ExecutionPolicy Bypass -File scripts\mcp-smoke-test.ps1`, then `.\mvnw.cmd test`. | "The smoke test verifies the MCP handshake, the exact tool set, and a real `add_todo` result. The Maven tests separately cover the service, web flow, and Spring context." |
-| Terminals / `.vscode/mcp.json` | Stop the app with `Ctrl+C`, then stop the Playwright MCP server. | "I stop both processes here, leaving the workspace ready for another clean run." |
-
-**Representative smoke-test output** (session and generated todo identifiers vary):
-
-```text
-1. initialize  -> server: todo-mcp-server v1.0.0  (session dd013c8a-bee0-4393-be7e-8e2fc99aac00)
-2. notifications/initialized -> sent
-3. tools/list  -> 5 tools: add_todo, complete_todo, delete_todo, get_todo, list_todos
-4. tools/call add_todo -> {"id":1,"title":"Created through the MCP add_todo tool","completed":false,"createdAt":"2026-07-16T10:54:28.414002200Z"}
-
-MCP smoke test PASSED.
-```
+| VS Code — Extensions view (`Ctrl+Shift+X`) | Search **`@mcp playwright`**, select the Playwright MCP server, and choose **Install** to add it to the VS Code user profile. Review the publisher and configuration, confirm that you trust the server, and wait for it to start. Open the Chat tools picker and confirm the Playwright tools are available. | "To test this Todo app through a real browser, Copilot first needs the Playwright tools. I'll search the MCP server gallery from the Extensions view and choose Install. That adds Playwright to my VS Code user profile without changing this workspace's MCP configuration. After I review and trust the server, VS Code starts it, discovers its tools, and makes them available to Copilot Chat." |
+| Terminal 1 | Run `.\mvnw.cmd spring-boot:run` and leave the app running on http://localhost:8080. | "The Playwright tools are now installed and available; next they need a live site to exercise. I'll start the Spring Boot app in its own terminal and leave it running at localhost on port 8080 while Copilot works." |
+| `templates/index.html` | Point out the `data-testid` hooks: `new-todo-input`, `add-todo`, `todo-item`, `delete-todo`. | "Before I hand over the browser, I'll show how the page supports reliable automation. These `data-testid` hooks give the input, add button, Todo rows, and delete buttons stable selectors that do not depend on the page's styling." |
+| Copilot Chat (Agent mode, Playwright MCP) | Ask: *"Use the Playwright tools to open http://localhost:8080. Add a todo called 'Verify the browser flow', find that todo's row, complete it and verify it is checked, then delete it and verify it is gone."* | "With the browser server connected, the app running, and stable selectors in place, I'll give Copilot one complete user journey. It must add a specific Todo, find and complete that item, verify the checkbox, then delete the item and verify it is gone. The prompt defines the result; Copilot decides which Playwright actions to use." |
+| Browser window (Playwright) | Watch the automated browser perform the add → complete → delete flow. | "Copilot now translates that goal into actions in the browser. I'll watch it fill and submit the form, find the new row, toggle the checkbox, and delete the item. The checks after completion and deletion confirm that the page changed, not just that the controls were clicked." |
+| Copilot Chat | Return to Chat and review the completed Playwright tool calls and final response. Confirm that Playwright loaded **Java TODO Demo**, added **Verify the browser flow**, observed its checkbox as checked, deleted it, and found no matching text afterward. | "The browser showed each action as it happened. Back in Chat, Copilot confirms that it loaded the Todo app, added the named item, observed its checkbox as checked, deleted it, and found no matching text afterward. Those are assertions against the page state, not just a record of clicks." |
+| Copilot Chat / Terminal 1 | Close the Playwright browser page, then stop the app with `Ctrl+C`. Leave the Playwright MCP server installed in the VS Code user profile. | "The complete browser journey passed, so I'll close the Playwright page and stop Spring Boot. Playwright remains installed in my VS Code user profile, ready for Copilot Chat in this or another workspace." |
 
 **Illustrative browser state during a Playwright run; the live Copilot tool calls are shown during the demo:**
 
@@ -149,17 +156,19 @@ MCP smoke test PASSED.
 
 **Prerequisites:** Use a GitHub account with Copilot coding agent enabled, write access to the demo repository, and the GitHub Pull Requests extension signed in to VS Code.
 
-**Recording plan:** Assign the issue before recording and let the asynchronous agent finish. During the video, use the prepared issue and draft pull request—do not create a duplicate or wait live. Keep the pull request unmerged until Episodes 1–3 are recorded so their baseline remains reproducible.
+**Recording plan:** Assign the issue before recording and let the asynchronous agent finish. During the video, use the prepared issue and draft pull request—do not create a duplicate or wait live. Before verifying the pull-request branch, start with an empty local H2 data directory; once the verification creates data, keep it in place for the restart check. Keep the pull request unmerged until every recording that depends on the in-memory baseline is complete.
 
 ### Demo
 
 | Where | Do | Say |
 |-------|----|-----|
-| `docs/copilot-agent-issue.md` | Open it; show the ready-to-assign task: add **Spring Data JPA** persistence with an **H2 database** and a **`dueDate`** field with filtering. | "Todos are in memory on purpose. This issue asks for an H2 database using Spring Data JPA. JPA stands for Java Persistence API, the standard interface used to map Java objects to database records. The issue also adds a due-date feature." |
-| GitHub — prepared issue | Open the issue that was assigned to **@copilot** before recording. | "I assigned this scoped issue ahead of time because the coding agent works asynchronously in the cloud. That removes an unpredictable live wait from the demo." |
-| GitHub Pull Requests view (VS Code) | Open the draft pull request after the implementation commit has arrived; update it with the current baseline, then review the 13-file feature diff, including the JPA entity, repository, `dueDate`, MCP changes, and tests. | "The agent opened a draft pull request and then completed the implementation. I first bring in the current baseline, then review the actual feature diff rather than assuming the first draft contains finished code." |
-| Pull-request branch + Terminals | Check out the updated pull-request branch. Run `.\mvnw.cmd test`; start the app in one terminal; in another run `powershell -ExecutionPolicy Bypass -File scripts\mcp-smoke-test.ps1 -ExpectedTools add_todo,complete_todo,delete_todo,get_todo,list_todos,set_due_date`. Then create a todo with a due date, restart the app, and confirm it persists. | "Before I consider merging, I run the tests, verify the expanded six-tool MCP contract, and check the two key behaviors locally: due dates work and data survives a restart." |
-| Pull request review | Review the results and leave comments if needed. Keep the pull request draft and unmerged during this recording; only mark it ready and merge after the review is complete and the baseline has been preserved. | "The agent produced the implementation, but the review, verification, and final merge decision still belong to me." |
+| `docs/copilot-agent-issue.md` | Open it; show the ready-to-assign task: add **Spring Data JPA** persistence with an **H2 database** and a **`dueDate`** field with filtering. | "The starting Todo app keeps everything in memory, so a restart erases its data. This issue replaces that store with a file-backed H2 database through Spring Data JPA. JPA is the standard interface for mapping Java objects to database records. The issue also defines optional due dates, filtering, and tests, giving the agent a concrete contract to implement." |
+| GitHub — prepared issue | Open the issue that was assigned to **@copilot** before recording. | "With the scope and acceptance criteria written down, I can delegate the issue instead of sending an open-ended prompt. I assigned this prepared issue to Copilot before recording. The coding agent works asynchronously in the cloud, so it can implement the feature and open a pull request without an unpredictable live wait." |
+| GitHub Pull Requests view (VS Code) | Open the draft pull request after the implementation commit has arrived; update it with the current baseline, then review the 13-file feature diff, including the JPA entity, repository, `dueDate`, MCP changes, and tests. | "That assignment produced this draft pull request. I'll first bring in the current baseline, then review the 13-file feature diff. I'm looking for the requested JPA entity and repository, the due date across the app and MCP tools, and tests for the new behavior. Draft status means the work is ready for review, not automatically approved." |
+| Pull-request branch + Terminal | Check out the updated pull-request branch and start the app with `.\mvnw.cmd spring-boot:run`. | "The diff shows how the feature was built; now I need to see how it behaves. I'll check out the updated pull-request branch and start the application, which gives VS Code the new MCP server to call." |
+| `.vscode/mcp.json` + Copilot Chat | Start `todo-mcp`, enable its tools, and confirm that all six are available: `add_todo`, `complete_todo`, `delete_todo`, `get_todo`, `list_todos`, and `set_due_date`. Ask: *"Use the todo-mcp tools to add a todo called 'Review the release', set its due date to 2000-01-01, then list only overdue todos and verify that item appears."* Confirm the returned item has that due date. | "With the updated app running, I'll connect VS Code to its MCP endpoint. The contract should now contain six tools, including `set_due_date`, while `list_todos` supports filtering. I'll use a date far in the past so the result is deterministic: if Copilot creates the Todo, sets that date, and finds it in the overdue list, all three behaviors work together." |
+| Terminal + Copilot Chat | Stop and restart the app. Restart the `todo-mcp` connection if needed, then ask: *"Use the todo-mcp tools to list overdue todos."* Confirm **Review the release** and its due date are still present. | "That Chat result proves the due date and filter work in one running process. Persistence requires one more check, so I'll stop and restart the application, reconnect the tools, and ask for overdue Todos again. If the same item and due date return, the H2 database has preserved them across the restart." |
+| Terminal / `.vscode/mcp.json` → Pull request review | Stop the application and the `todo-mcp` connection, then return to the pull request. Review the results and leave comments if needed. Keep the pull request draft and unmerged during this recording; only mark it ready and merge after the review is complete and the baseline has been preserved. | "The persisted item gives me both the code review and the live behavior to work from. I'll stop the local application and MCP connection, return to the pull request, and leave comments if anything needs attention. I'll keep it in draft until the review is complete, then make the final decision with the evidence in front of me." |
 
 **The prepared issue assigned to the Copilot coding agent (@copilot):**
 

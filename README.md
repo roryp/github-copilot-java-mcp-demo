@@ -31,8 +31,6 @@ flowchart LR
 - JDK 25 (`java -version` should report version 25)
 - VS Code with the **Extension Pack for Java** and **Spring Boot Extension Pack**
 - GitHub Copilot access for the Copilot and MCP workflow
-- Node.js 18 or newer and Microsoft Edge for the optional Playwright workflow
-- PowerShell 7, or Windows PowerShell 5.1 on Windows, for the optional MCP smoke test
 
 Maven does not need to be installed separately; the repository includes the
 Maven Wrapper.
@@ -116,27 +114,29 @@ Run the Java tests with the Maven Wrapper.
 ./mvnw test
 ```
 
-To test the MCP handshake, tool set, and `add_todo` result, keep
-`spring-boot:run` running in one terminal and run the smoke test from a second:
-
-```powershell
-# PowerShell 7 on Windows, macOS, or Linux
-pwsh -File ./scripts/mcp-smoke-test.ps1
-
-# Windows PowerShell 5.1
-powershell -ExecutionPolicy Bypass -File scripts\mcp-smoke-test.ps1
-```
-
-The script exits with an error unless the expected five tools and a valid
-`add_todo` result are returned.
-
 The UI exposes stable `data-testid` hooks (`new-todo-input`, `add-todo`, `todo-item`,
 `delete-todo`) so a Playwright run can drive add → complete → delete end to end.
 
-The tracked [.vscode/mcp.json](.vscode/mcp.json) also configures a verified
-release of the official Playwright MCP server through `npx`, using installed
-Microsoft Edge. It requires Node.js 18 or newer. Start the `playwright` server
-from its code-lens and approve the server/tools when VS Code prompts.
+Install the Playwright MCP server directly in VS Code:
+
+1. Open the Extensions view (`Ctrl+Shift+X`).
+2. Search for `@mcp playwright`.
+3. Select the Playwright MCP server and choose **Install**.
+4. Review and trust the server when prompted, then confirm its tools appear in
+    the Chat tools picker.
+
+The **Install** action adds the server to your VS Code user profile, making it
+available across workspaces. It does not add Playwright to this repository's
+[.vscode/mcp.json](.vscode/mcp.json). The separate **Install in Workspace**
+action is what writes a server configuration to the workspace file.
+
+With the app running, ask Copilot Chat in Agent mode:
+
+> Use the Playwright tools to open http://localhost:8080. Add a todo called
+> "Verify the browser flow", find that todo's row, complete it and verify it is
+> checked, then delete it and verify it is gone.
+
+Review the Playwright tool calls and final verification in Copilot Chat.
 
 ---
 
