@@ -142,13 +142,12 @@ Review the Playwright tool calls and final verification in Copilot Chat.
 
 ## Optional next step — GitHub Copilot coding agent
 
-Todos are kept **in memory** on purpose. A ready-to-assign issue,
-[docs/copilot-agent-issue.md](docs/copilot-agent-issue.md), asks the cloud agent to add
-Spring Data JPA + H2 persistence and a `dueDate` field. This requires a GitHub
-account with Copilot coding agent enabled and write access to a repository or
-fork. Create an issue from the prepared description, assign it to **@copilot**
-(or use **"Delegate to coding agent"** in the GitHub Pull Requests view), then
-review and test the draft pull request before deciding whether to merge it.
+The Todo page intentionally uses the browser's default styling. A prepared task,
+[docs/copilot-agent-issue.md](docs/copilot-agent-issue.md), asks the coding agent to
+add a small, responsive stylesheet without changing the app's behavior. This
+requires a GitHub account with Copilot coding agent enabled and write access to
+the repository or a fork. Submit the task from a Copilot Chat cloud session,
+then review and test the draft pull request before deciding whether to merge it.
 
 ---
 
@@ -160,7 +159,7 @@ to demo **Java** development in **VS Code** with **GitHub Copilot**:
 1. Build and debug a Spring Boot app (Extension Pack for Java, Spring Initializr, breakpoints, live memory view).
 2. Expose the endpoints to Copilot as **MCP** tools.
 3. Let Copilot test the UI end to end with **Playwright**.
-4. Hand a new feature to the **GitHub Copilot coding agent**, then review and validate the draft PR it opens.
+4. Ask the **GitHub Copilot coding agent** to polish the UI, then review and validate the draft PR it opens.
 
 ---
 
