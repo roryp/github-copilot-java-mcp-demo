@@ -5,27 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Java TODO Demo</title>
     <link rel="icon" href="data:," />
+    <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
+<div class="container">
     <h1>Java TODO Demo</h1>
 
-    <form method="post" action="/todos" autocomplete="off">
+    <form method="post" action="/todos" autocomplete="off" class="add-form">
         <input type="text" name="title" placeholder="What needs doing?"
              aria-label="New todo title" data-testid="new-todo-input" required />
-        <button type="submit" data-testid="add-todo">Add</button>
+        <button type="submit" class="btn-add" data-testid="add-todo">Add</button>
     </form>
 
-    <ul>
-        <li th:each="todo : ${todos}" data-testid="todo-item">
-            <form method="post" th:action="@{/todos/{id}/toggle(id=${todo.id})}">
+    <ul class="todo-list">
+        <li th:each="todo : ${todos}"
+            th:classappend="${todo.completed} ? 'completed'"
+            class="todo-item"
+            data-testid="todo-item">
+            <form method="post" th:action="@{/todos/{id}/toggle(id=${todo.id})}" class="todo-row">
                 <input type="checkbox" th:checked="${todo.completed}"
                        th:attr="aria-label='Toggle ' + ${todo.title}"
                        onchange="this.form.submit()" />
-                <span th:text="${todo.title}">Todo title</span>
+                <span class="todo-title" th:text="${todo.title}">Todo title</span>
                 <button type="submit" th:formaction="@{/todos/{id}/delete(id=${todo.id})}"
-                        data-testid="delete-todo">Delete</button>
+                        class="btn-delete" data-testid="delete-todo">Delete</button>
             </form>
         </li>
     </ul>
+</div>
 </body>
 </html>
