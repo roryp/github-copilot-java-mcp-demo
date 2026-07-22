@@ -144,7 +144,8 @@ Review the Playwright tool calls and final verification in Copilot Chat.
 
 The Todo page intentionally uses the browser's default styling. A prepared task,
 [docs/copilot-agent-issue.md](docs/copilot-agent-issue.md), asks the coding agent to
-add a small, responsive stylesheet without changing the app's behavior. This
+install the supplied [stylesheet](docs/styles.css) without changing its contents
+or the app's behavior. This
 requires a GitHub account with Copilot coding agent enabled and write access to
 the repository or a fork. Submit the task from a Copilot Chat cloud session,
 then review and test the draft pull request before deciding whether to merge it.
