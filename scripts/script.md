@@ -8,15 +8,11 @@
 
 ## Episode 1 of 4 — Build and debug your first Spring Boot app
 
-### Intro — Talking head (~50s)
+### Intro — Talking head (~40s)
 
-> Welcome to this introduction to Java and Spring Boot in Visual Studio Code.
+> Ever wondered what a Spring Boot app is actually doing between a browser click and the Java code that handles it?
 >
-> Java is one of the world’s most widely used programming languages. Organizations of every size use it for enterprise applications, financial systems, cloud services, and Android apps. Its reliability, performance, and large ecosystem have made it a popular choice for decades.
->
-> Spring Boot is one of the most popular Java frameworks. It handles much of the setup and configuration needed for modern applications, so developers can focus on application code instead of boilerplate.
->
-> Whether you’re new to Java or already have some experience, the goal is to get you up and running with Java development in Visual Studio Code. I’ll set up the Java and Spring tooling and use Spring Initializr to retrace how the starter project was configured. Then I’ll explore and run the finished sample, follow a request through the code with the debugger, and monitor the app’s health and memory. Let’s jump right in.
+> In this video, I’ll show you how to get the Java and Spring tooling ready in Visual Studio Code, retrace the project setup with Spring Initializr, and explore a finished sample application. Then I’ll run it, follow one request through the debugger, and check its health and memory while it is live. By the end, you’ll know both how the project is put together and what happens when it runs. Let’s jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
@@ -84,9 +80,9 @@
 
 ## Episode 2 of 4 — Expose your endpoints to Copilot with the Model Context Protocol (MCP)
 
-### Intro — Talking head (~20s)
+### Intro — Talking head (~25s)
 
-> In this video, I'll show how a Spring Boot app becomes a set of tools GitHub Copilot can call directly in Visual Studio Code. I'll use Spring AI to expose the existing Java operations through the Model Context Protocol, or MCP, while keeping the web interface and Copilot connected to the same service. Let's jump right in.
+> Did you know GitHub Copilot can call your Spring Boot app’s Java operations directly from Visual Studio Code? In this video, I’ll use Spring AI and the Model Context Protocol, or MCP, to turn parts of the app into tools Copilot can use. Then I’ll invoke those tools through Copilot and verify the result in the web interface. Let’s jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
@@ -118,15 +114,15 @@
 
 ### Outro — Talking head (~20s)
 
-> And there it is. I used Spring AI to expose the Todo operations as tools through the Model Context Protocol, connected those tools to GitHub Copilot in Visual Studio Code, and kept the web interface and Copilot using the same Java service. A Todo created through Copilot now appears in the web app straight away. What part of your own Java application would you turn into a Copilot tool? Let me know in the comments. Thanks for watching, and happy building.
+> And there it is. I used Spring AI to expose Java operations as tools through the Model Context Protocol, connected those tools to GitHub Copilot in Visual Studio Code, and kept the web interface and Copilot using the same service. A change made through Copilot now appears in the web app straight away. What part of your own Java application would you turn into a Copilot tool? Let me know in the comments. Thanks for watching, and happy building.
 
 ---
 
 ## Episode 3 of 4 — Let Copilot test it with Playwright
 
-### Intro — Talking head (~20s)
+### Intro — Talking head (~25s)
 
-> In this video, I'll show how to test a Spring Boot web app in Visual Studio Code with GitHub Copilot and Playwright through the Model Context Protocol, or MCP. Passing unit tests don't prove the user interface works for a real user, so I'll have Copilot drive the app in a real browser and verify the experience end to end. Let's jump right in.
+> Could your Java tests all pass while the web interface is still broken for a real user? In this video, I’ll connect Playwright to GitHub Copilot through the Model Context Protocol, or MCP, and have Copilot verify a complete user journey in a real browser. That gives me confidence in the experience users actually see, not just the code behind it. Let’s jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
@@ -153,15 +149,15 @@
 
 ### Outro — Talking head (~20s)
 
-> And there it is. I connected Playwright to GitHub Copilot through the Model Context Protocol and had Copilot test the Spring Boot app in a real browser. It added a Todo, completed it, deleted it, and verified each result. Combined with the unit and integration tests, that gives me confidence in both the code and the experience a user actually sees. What browser workflow would you ask Copilot to test in your own app? Let me know in the comments. Thanks for watching, and happy building.
+> And there it is. I connected Playwright to GitHub Copilot through the Model Context Protocol and had Copilot test the Spring Boot app in a real browser. Combined with the unit and integration tests, that gives me confidence in both the code and the experience a user actually sees. What browser workflow would you ask Copilot to test in your own app? Let me know in the comments. Thanks for watching, and happy building.
 
 ---
 
 ## Episode 4 of 4 — Let the Copilot coding agent polish the UI
 
-### Intro — Talking head (~20s)
+### Intro — Talking head (~30s)
 
-> In this video, I'll hand the GitHub Copilot coding agent a small visual task for a Spring Boot Todo app and review the pull request it creates in Visual Studio Code. I'll ask it to add a stylesheet that makes the page cleaner and easier to use without changing how the app works. Let's jump right in.
+> What if GitHub Copilot could take a task from your backlog, work on it in the cloud, and return a pull request while you focus on something else? In this video, I’ll show you that complete coding agent workflow in Visual Studio Code. I’ll delegate a change to the GitHub Copilot coding agent, then review its pull request and run the result before deciding whether to merge. Let’s jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
@@ -190,7 +186,7 @@
 
 ### Outro — Talking head (~30s)
 
-> And there it is. The coding agent turned a small, focused task into a pull request that gives the Todo app a cleaner design, while I reviewed both the CSS and the working page before deciding what gets merged. That’s the point: even a minor polish task can be delegated without giving up control. What small improvement would you hand to the coding agent? Let me know in the comments. Thanks for watching, and happy building.
+> And there it is. The GitHub Copilot coding agent took a repository task, worked on it in the cloud, and returned a pull request for me to review. I checked the exact changes and ran the result before deciding what gets merged. That’s the point: the agent can work asynchronously without taking the final decision out of your hands. What task would you delegate to the coding agent? Let me know in the comments. Thanks for watching, and happy building.
 
 **Do:** Hold on the reviewed draft pull request, then fade out.
 
