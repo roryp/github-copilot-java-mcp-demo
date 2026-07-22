@@ -119,7 +119,7 @@ The UI exposes stable `data-testid` hooks (`new-todo-input`, `add-todo`, `todo-i
 
 Install the Playwright MCP server directly in VS Code:
 
-1. Open the Extensions view (`Ctrl+Shift+X`).
+1. Select the **Extensions** button in the VS Code Activity Bar.
 2. Search for `@mcp playwright`.
 3. Select the Playwright MCP server and choose **Install**.
 4. Review and trust the server when prompted, then confirm its tools appear in
