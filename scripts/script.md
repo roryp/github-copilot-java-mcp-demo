@@ -173,18 +173,18 @@
 
 | Where | Do | Say |
 |-------|----|-----|
-| `docs/styles.css` → `templates/index.html` | Show the finished stylesheet in `docs`, then show that the Todo template does not link to it yet. | "I already have the finished stylesheet in the `docs` folder, but the app does not use it yet. I'll give that exact file to the coding agent and ask it to connect the stylesheet without changing the design or the app's behavior." |
-| Copilot Chat — New Chat Session | Start a blank Chat with **New Chat** (`Ctrl+N`). Choose **Cloud**, select the current repository, attach `docs/styles.css`, enter the task below, and submit it. | "I'll start a new Chat, choose Cloud, and select this repository. Then I'll attach the finished stylesheet and ask the agent to copy it into the app, link it from the template, and open a pull request." |
+| `docs/styles.css` → `templates/index.html` | Show the finished stylesheet in `docs`, then show that the Todo template does not link to it yet. | "I already have the finished stylesheet in the `docs` folder, but the app does not use it yet. I'll point the coding agent to that file and ask it to connect the stylesheet without changing the design or the app's behavior." |
+| Copilot Chat — New Chat Session | Start a blank Chat with **New Chat** (`Ctrl+N`). Paste the exact prompt below into the Chat composer. Select **Coding agent**, choose the current repository, and submit the prompt. | "I'll start a new Chat and paste in the complete task. Then I'll select Coding agent, choose this repository, and submit it so the work can continue in the cloud." |
 | Copilot Chat — running cloud session | Show that the task has started, then cut while the agent works. Resume from the same session after it completes. | "The coding agent is working on the task in the cloud, so I'll cut here and come back when it is finished." |
-| Copilot Chat → draft pull request | Show the completed session and open its draft pull request. Review the stylesheet link in `index.html` and confirm the new `static/styles.css` matches the attached file. | "The agent has finished, and the app now uses the stylesheet I supplied. I'll open the draft pull request and check the two-file change: one link in the template and an unchanged copy of the attached CSS." |
+| Copilot Chat → draft pull request | Show the completed session and open its draft pull request. Review the stylesheet link in `index.html` and confirm the new `static/styles.css` matches `docs/styles.css`. | "The agent has finished, and the app now uses the stylesheet from the repository. I'll open the draft pull request and check the two-file change: one link in the template and an unchanged copy of the supplied CSS." |
 | Pull-request branch → Spring Boot Dashboard | Check out the pull-request branch and start **springboot-mcp-demo** from the Dashboard. Wait silently until it is running on port 8080. | "The change is focused, so I'll check out the pull-request branch and run the app from the Spring Boot Dashboard." |
 | VS Code browser → Spring Boot Dashboard | Open http://localhost:8080 in VS Code. Show the styled page, add **Review the new design**, and complete it to show the completed style. Then stop the app and return to the draft pull request. | "The page now has a clear layout and styled controls. I'll add a Todo and complete it to confirm both the original flow and the new completed style. The change works, so I'll stop the app and return to the pull request for the final review." |
 
-**Coding agent task:**
+**Exact prompt to paste into Copilot Chat:**
 
-> Use the attached `docs/styles.css` exactly as provided. Copy it unchanged to `src/main/resources/static/styles.css`. In `src/main/resources/templates/index.html`, add `<link rel="stylesheet" th:href="@{/styles.css}" />` after the favicon link. Do not redesign, rewrite, or reformat the CSS, and do not modify the source file in `docs`. Preserve all routes, behavior, accessibility labels, and `data-testid` attributes. Do not add JavaScript or dependencies. Run the existing tests and open a pull request.
+> Use `docs/styles.css` exactly as provided. Copy it unchanged to `src/main/resources/static/styles.css`. In `src/main/resources/templates/index.html`, add `<link rel="stylesheet" th:href="@{/styles.css}" />` after the favicon link. Do not redesign, rewrite, or reformat the CSS, and do not modify the source file in `docs`. Preserve all routes, behavior, accessibility labels, and `data-testid` attributes. Do not add JavaScript or dependencies. Run the existing tests and open a pull request.
 
-**Capture during recording:** `docs/styles.css` attached to the stylesheet task in a Copilot Chat cloud session.
+**Capture during recording:** the exact prompt in Copilot Chat with **Coding agent** selected.
 
 **Capture during recording:** the draft pull request showing the template and stylesheet diff.
 
