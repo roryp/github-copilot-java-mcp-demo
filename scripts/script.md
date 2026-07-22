@@ -1,6 +1,6 @@
 # Demo Recording Script — Java Spring Boot + Model Context Protocol (MCP) + Copilot
 
-**Demo source:** Prepared local copy. Add the finished sample repository link only after publication approval.
+**Demo source:** [microsoft/github-copilot-java-mcp-demo](https://github.com/microsoft/github-copilot-java-mcp-demo)
 
 > **Publication check:** Review every screenshot and screen recording for repository names, local paths, account names, notifications, and other identifying information. Redact or replace any exposed details before publishing.
 
@@ -86,7 +86,7 @@
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
-**Prerequisites:** Clone the finished sample from the GitHub URL in the video description and open it in VS Code with GitHub Copilot installed and signed in. Allow MCP tool use when VS Code prompts for trust or confirmation.
+**Prerequisites:** Clone the finished sample from the [GitHub repository](https://github.com/microsoft/github-copilot-java-mcp-demo) and open it in VS Code with GitHub Copilot installed and signed in. Allow MCP tool use when VS Code prompts for trust or confirmation.
 
 ### Demo
 
@@ -122,7 +122,7 @@
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
-**Prerequisites:** Clone the finished sample from the GitHub URL in the video description and open it in a current version of VS Code with GitHub Copilot installed and signed in. Install the Spring Boot Extension Pack, and allow MCP server installation and tool use when prompted.
+**Prerequisites:** Clone the finished sample from the [GitHub repository](https://github.com/microsoft/github-copilot-java-mcp-demo) and open it in a current version of VS Code with GitHub Copilot installed and signed in. Install the Spring Boot Extension Pack, and allow MCP server installation and tool use when prompted.
 
 ### Demo
 
@@ -154,7 +154,7 @@
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
-**Prerequisites:** Clone the finished sample from the GitHub URL in the video description and open it in VS Code. Use a GitHub account with Copilot coding agent enabled, write access to the demo repository, and the GitHub Pull Requests extension signed in to VS Code.
+**Prerequisites:** Clone the finished sample from the [GitHub repository](https://github.com/microsoft/github-copilot-java-mcp-demo) and open it in VS Code. Use a GitHub account with Copilot coding agent enabled, write access to the demo repository, and the GitHub Pull Requests extension signed in to VS Code.
 
 **Recording plan:** Start from a clean, pushed `main` branch. Submit the task from Copilot Chat while recording, then cut while the cloud agent works and resume from the completed cloud session and its draft pull request. Keep the pull request unmerged until the review and recording are complete.
 
@@ -184,7 +184,7 @@
 
 ## Resources (video descriptions / hand-off)
 
-- **Demo source:** Add a repository link only after publication approval
+- **Demo source:** https://github.com/microsoft/github-copilot-java-mcp-demo
 - **Extension Pack for Java** (Microsoft): https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack
 - **Spring Boot Extension Pack:** search “Spring Boot Extension Pack” in the VS Code Marketplace
 - **Java in VS Code:** https://code.visualstudio.com/docs/languages/java
