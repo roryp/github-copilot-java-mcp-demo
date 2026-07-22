@@ -1,22 +1,21 @@
-# Add persistent todos and due dates
+# Polish the Todo page with a stylesheet
 
-The Todo app currently stores data in memory, so all todos are lost when the
-application restarts. Update the app to persist todos and support optional due
-dates.
+The Todo app works, but the page still uses the browser's default styling. Add
+a small stylesheet that makes it cleaner and easier to use without changing how
+the app works.
 
 ## Requirements
 
-- Replace the in-memory repository with Spring Data JPA and a file-based H2
-  database so todos survive application restarts.
-- Add an optional `dueDate` field to `Todo`.
-- Update the web form and Todo list to accept and display due dates.
-- Visually identify overdue todos in the web UI.
-- Add an MCP tool named `set_due_date`.
-- Update `list_todos` to support `all`, `today`, and `overdue` filters.
-- Keep the existing web and MCP functionality working.
-- Add or update tests for persistence, due dates, and filtering.
+- Add `src/main/resources/static/styles.css` and link it from the Thymeleaf
+  template.
+- Use a centered, responsive layout with clear spacing and readable typography.
+- Style the text input, Add and Delete buttons, and Todo rows.
+- Make completed Todos visually distinct with muted, struck-through text.
+- Preserve the existing routes, form behavior, accessibility labels, and
+  `data-testid` attributes.
+- Do not add JavaScript or a frontend dependency.
 
 ## Done when
 
-- `./mvnw clean package` passes.
-- A todo and its due date are still present after restarting the application.
+- The page is clearly styled at desktop and narrow widths.
+- Adding, completing, and deleting a Todo still works.
