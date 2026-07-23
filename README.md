@@ -147,8 +147,15 @@ The Todo page intentionally uses the browser's default styling. A prepared task,
 install the supplied [stylesheet](docs/styles.css) without changing its contents
 or the app's behavior. This
 requires a GitHub account with Copilot coding agent enabled and write access to
-the repository or a fork. Submit the task from a Copilot Chat cloud session,
-then review and test the draft pull request before deciding whether to merge it.
+the repository or a fork. For this sample, fork the repository and clone the fork
+so it is the `origin` remote. Run **Chat: Open Agents Window** from the Command
+Palette, select **New**, and use the workspace dropdown to choose the writable
+fork as a GitHub repository instead of the local folder or the `microsoft`
+upstream. Selecting a repository there automatically uses Copilot cloud agent.
+The regular Chat view does not expose this repository picker. If the target
+repository belongs to an organization that enforces SAML SSO, authorize VS Code's
+GitHub OAuth app for that organization first. Then review and test the draft pull
+request before deciding whether to merge it.
 
 ---
 
