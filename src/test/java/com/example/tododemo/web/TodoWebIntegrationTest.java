@@ -43,4 +43,18 @@ class TodoWebIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(not(containsString("Water the plants"))));
     }
+
+    @Test
+    void indexIncludesStylesheetLink() throws Exception {
+        mvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("href=\"/styles.css\"")));
+    }
+
+    @Test
+    void stylesheetIsServedFromStaticResources() throws Exception {
+        mvc.perform(get("/styles.css"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString(":root {")));
+    }
 }
