@@ -8,13 +8,13 @@
 
 > **Control rule:** Use visible buttons, menus, and links for every demo action. Do not use keyboard shortcuts or function keys. Use the keyboard only to enter text into fields and prompts.
 
-## Episode 1 of 3 — Build and debug your first Spring Boot app
+## Episode 1 of 4 — Build and run your first Spring Boot app
 
-### Intro — Talking head (~40s)
+### Intro — Talking head (~35s)
 
-> Ever wondered what a Spring Boot app is actually doing between a browser click and the Java code that handles it?
+> Want to build your first Spring Boot app in Visual Studio Code and understand how the pieces fit together?
 >
-> In this video, I’ll show you how to get the Java and Spring tooling ready in Visual Studio Code, retrace the project setup with Spring Initializr, and explore a finished sample application. Then I’ll run it, follow one request through the debugger, and check its health and memory while it is live. By the end, you’ll know both how the project is put together and what happens when it runs. Let’s jump right in.
+> In this video, I’ll get the Java and Spring tooling ready, retrace the project setup with Spring Initializr, and explore a finished Todo application. Then I’ll build it, run it from the Spring Boot Dashboard, and verify its add, complete, and delete flow in the browser. Let’s jump right in.
 
 **Do:** End on “let's jump right in,” then cut to screen share.
 
@@ -40,7 +40,7 @@
 | Spring Boot Dashboard | Find **springboot-mcp-demo**, select its **Run** action, and wait for the app to show as running. **Do not narrate while it starts.** | "The successful build confirms the code and tests pass. Now I'll find the same project in the Spring Boot Dashboard and select Run. I'll let startup finish silently, then use the Dashboard's running state to open the application." |
 | Spring Boot Dashboard → browser | Point to the app's running state and port in the Dashboard, then select its **Open** action to open http://localhost:8080. | "The Dashboard now shows the application running on port 8080. I'll select its Open action to launch the page in the browser so I can exercise the request path I just traced." |
 | Browser | Enter **Prepare the demo**, select **Add**, mark that item complete, and select its **Delete** button. | "I'll enter `Prepare the demo` and select Add to create a Todo. When the new row appears, I'll select its checkbox to mark it complete. Then I'll select Delete for that same row. All three changes return through the controller and render immediately, so the basic flow is working." |
-| Spring Boot Dashboard | Return to the Dashboard and select the app's **Stop** action. | "The add, complete, and delete cycle worked. I'll return to the Dashboard and select Stop, which frees port 8080 so I can launch the same application with the debugger attached." |
+| Spring Boot Dashboard | Return to the Dashboard and select the app's **Stop** action. | "The add, complete, and delete cycle worked. I'll return to the Dashboard and select Stop to shut the application down cleanly. The project is now built, tested, and verified in Visual Studio Code." |
 
 **The Spring Initializr version picker:**
 
@@ -50,21 +50,39 @@
 
 ![Todo web app](../docs/images/01-web-app.png)
 
-### Demo — Debug & watch memory
+### Outro — Talking head (~25s)
 
-**Before recording:** Close Copilot Chat and hide any terminal or output content that exposes local paths, account details, or unrelated notifications.
+> And there it is. I set up the Java and Spring extensions, used Spring Initializr to retrace the starter configuration, and explored the finished Todo app from model to controller. Then I built it, ran it from the Spring Boot Dashboard, and verified its core browser flow. That took me from a Java setup to a working Spring Boot application in Visual Studio Code. What would you build first with Java and Spring Boot? Let me know in the comments. Thanks for watching, and happy building.
+
+---
+
+## Episode 2 of 4 — Debug and inspect a Spring Boot request
+
+### Intro — Talking head (~30s)
+
+> Ever wondered what a Spring Boot app is actually doing between a browser click and the Java code that handles it?
+>
+> In this video, I’ll open a finished Spring Boot Todo app in Visual Studio Code and follow one add request through the Java debugger. I’ll inspect the request data, step from the controller into the service, and then use the Spring Boot Dashboard to check the running app’s endpoint mappings, health, and live memory. Let’s jump right in.
+
+**Do:** End on “let's jump right in,” then cut to screen share.
+
+### Demo
+
+**Prerequisites:** Clone the finished sample from the [GitHub repository](https://github.com/microsoft/github-copilot-java-mcp-demo) and open it in VS Code with Java 25, the Extension Pack for Java, and the Spring Boot Extension Pack installed.
+
+**Before recording:** Stop the Spring Boot app, make sure port 8080 is free, close Copilot Chat, and hide any terminal or output content that exposes local paths, account details, or unrelated notifications.
 
 | Where | Do | Say |
 |-------|----|-----|
-| Editor — `TodoController.java` | Click the gutter to set a breakpoint on the `service.add(title)` line in `addForm`. | "I'll return to `TodoController` and set a breakpoint on the line that passes the submitted title to the service. The next add request will pause at the boundary between the web layer and the application logic. Now I need to restart the app under the debugger." |
-| Spring Boot Dashboard | Select the app's **Debug** action and wait for the debugger to connect. **Do not narrate while the app starts.** | "In the Spring Boot Dashboard, I'll select Debug for the same application. The normal run is stopped, so the debug process can use port 8080. I'll wait silently for the debugger to connect before inspecting its live controls." |
+| Editor — `TodoController.java` | Show the `addForm` method, then click the gutter to set a breakpoint on its `service.add(title)` line. | "I've opened the finished Todo sample, where the web form sends a title to `TodoController`. In `addForm`, the controller passes that title to the shared service. I'll set a breakpoint on that call so the next add request pauses at the boundary between the web layer and the application logic." |
+| Spring Boot Dashboard | Select the app's **Debug** action and wait for the debugger to connect. **Do not narrate while the app starts.** | "The breakpoint is ready. In the Spring Boot Dashboard, I'll select Debug for the application. I'll wait silently for the debugger to connect before inspecting its live controls." |
 | Spring Boot Dashboard → `TodoController.java` | Show the app's running debug state. Expand the app and point out **Beans**, **Endpoint Mappings**, **Properties**, and **Memory**. Then return to the controller and show the gray URL hints above its mappings. | "The Dashboard now shows the app running with the debugger attached. I'll expand it to reveal live views for its beans, endpoint mappings, properties, and memory. Back in the controller, Spring Tools also adds gray URL hints above the mapped methods. I'll use the root hint to send a request to the breakpoint." |
 | Editor → browser | Click the root URL hint, enter **Trace this request** in the form, and select **Add**. Wait for VS Code to stop at the breakpoint. | "I'll open the root page directly from the controller's URL hint. In the form, I'll enter `Trace this request` and select Add. That request should stop in VS Code before the controller calls the service." |
 | Debug toolbar + Variables panel | Expand **Local** and inspect `title`. Select **Step Into** in the Debug toolbar to enter `TodoService.add`, select **Step Over** to execute the `Todo todo = ...` line, and inspect the new `todo` local. | "The breakpoint has paused on the service call. In the Local variables, I'll expand `title` and confirm that the controller received `Trace this request`. Next, I'll select Step Into in the Debug toolbar to enter `TodoService.add`. I'll select Step Over to execute the line that creates the `Todo`, then inspect the new local object before the repository assigns its id." |
 | Debug toolbar → browser | Select **Continue** in the Debug toolbar, wait for the request to finish, and show **Trace this request** in the browser. Leave the debug session running. | "The service has created the object, so I'll select Continue in the Debug toolbar. The repository can now assign the id, the controller can redirect, and Thymeleaf can render the refreshed list. When `Trace this request` appears in the browser, the end-to-end request is complete. I'll keep the debugger attached for two runtime checks." |
 | Spring Boot Dashboard → **Endpoint Mappings** → browser | Expand **Endpoint Mappings**, find `/actuator/health`, and select its **Open** action. In the browser, point to the `UP` status. | "First, I'll expand Endpoint Mappings, find `/actuator/health`, and select its Open action. The `UP` status in the browser confirms that the running application is healthy at this moment. For a live signal rather than a single response, I'll return to the Dashboard's Memory view." |
 | Spring Boot Dashboard → running app → **Memory** view | Open **Memory** and show the live heap information updating. | "I'll expand the running app and open Memory. This view updates the application's heap information while the debug process continues to run. That completes the runtime inspection, so I can shut the process down cleanly." |
-| Debug toolbar | Select **Stop** in the Debug toolbar and confirm the app is no longer running. | "I'll select Stop in the Debug toolbar. The Dashboard no longer shows the app as running, and port 8080 is free for the next episode." |
+| Debug toolbar | Select **Stop** in the Debug toolbar and confirm the app is no longer running. | "I'll select Stop in the Debug toolbar. The Dashboard no longer shows the app as running, so the request trace and runtime inspection are complete." |
 
 **Actuator health summary (all systems UP; local filesystem details removed):**
 
@@ -74,13 +92,13 @@
 
 ![Memory view](../docs/images/05-memory-view.png)
 
-### Outro — Talking head (~20s)
+### Outro — Talking head (~25s)
 
-> And there it is. I set up the Java and Spring extensions and used Spring Initializr to retrace the starter configuration. Then I explored and ran the finished sample, followed a request through the code with the debugger, and monitored the app’s health and memory. That took me from a new Java setup to understanding what a Spring Boot app is doing while it runs. What would you build first with Java and Spring Boot? Let me know in the comments. Thanks for watching, and happy building.
+> And there it is. I followed a browser request into `TodoController`, inspected its title, stepped into `TodoService`, and watched the completed request return to the page. Then I used the Spring Boot Dashboard to confirm the app’s health and monitor its live heap. That is how Visual Studio Code turns a running Spring Boot app into something I can inspect rather than guess about. What request would you trace first in your own application? Let me know in the comments. Thanks for watching, and happy building.
 
 ---
 
-## Episode 2 of 3 — Expose your Java operations to Copilot with MCP
+## Episode 3 of 4 — Expose your Java operations to Copilot with MCP
 
 ### Intro — Talking head (~25s)
 
@@ -120,7 +138,7 @@
 
 ---
 
-## Episode 3 of 3 — Let Copilot test it with Playwright
+## Episode 4 of 4 — Let Copilot test it with Playwright
 
 ### Intro — Talking head (~25s)
 
