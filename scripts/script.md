@@ -8,7 +8,7 @@
 
 > **Control rule:** Use visible buttons, menus, and links for every demo action. Do not use keyboard shortcuts or function keys. Use the keyboard only to enter text into fields and prompts.
 
-## Episode 1 of 4 — Build and debug your first Spring Boot app
+## Episode 1 of 3 — Build and debug your first Spring Boot app
 
 ### Intro — Talking head (~40s)
 
@@ -80,7 +80,7 @@
 
 ---
 
-## Episode 2 of 4 — Expose your Java operations to Copilot with MCP
+## Episode 2 of 3 — Expose your Java operations to Copilot with MCP
 
 ### Intro — Talking head (~25s)
 
@@ -120,7 +120,7 @@
 
 ---
 
-## Episode 3 of 4 — Let Copilot test it with Playwright
+## Episode 3 of 3 — Let Copilot test it with Playwright
 
 ### Intro — Talking head (~25s)
 
@@ -155,45 +155,6 @@
 
 ---
 
-## Episode 4 of 4 — Let the Copilot coding agent polish the UI
-
-### Intro — Talking head (~30s)
-
-> What if GitHub Copilot could take a task from your backlog, work on it in the cloud, and return a pull request while you focus on something else? In this video, I’ll show you that complete coding agent workflow in Visual Studio Code. I’ll delegate a change to the GitHub Copilot coding agent, then review its pull request and run the result before deciding whether to merge. Let’s jump right in.
-
-**Do:** End on “let's jump right in,” then cut to screen share.
-
-**Prerequisites:** Fork the finished sample from the [GitHub repository](https://github.com/microsoft/github-copilot-java-mcp-demo), clone the fork so it is the `origin` remote, and open it in VS Code. Use a GitHub account with Copilot coding agent enabled, write access to the fork, and the GitHub Pull Requests extension signed in to VS Code. If the target repository belongs to an organization that enforces SAML SSO, authorize VS Code's GitHub OAuth app for that organization first.
-
-**Recording plan:** Start from a clean, pushed `main` branch. Open the Agents window, select the fork as a GitHub repository, and send the task while recording. Cut while the cloud agent works, then resume from the completed cloud session and its draft pull request. Keep the pull request unmerged until the review and recording are complete.
-
-### Demo
-
-| Where | Do | Say |
-|-------|----|-----|
-| `docs/styles.css` → `templates/index.html` | Show the finished stylesheet in `docs`, then show that the Todo template does not link to it yet. | "I already have the finished stylesheet in the `docs` folder, but the app does not use it yet. I'll point the coding agent to that file and ask it to connect the stylesheet without changing the design or the app's behavior." |
-| Command Palette → Agents window — New session | Run **Chat: Open Agents Window**. In the Agents window, select **New**, open the workspace dropdown, and choose the writable GitHub fork rather than the local folder or the `microsoft` upstream. Selecting a repository automatically uses Copilot cloud agent. Paste the exact prompt below and select **Send**. | "I'll open the Agents window and start a new session. In its workspace picker, I'll select my GitHub fork, which runs this repository task with Copilot cloud agent. Then I'll paste the complete task and select Send." |
-| Agents window — running cloud session | Show that the task has started, then cut while the agent works. Resume from the same session after it completes. | "The coding agent is working on the task in the cloud, so I'll cut here and come back when it is finished." |
-| Agents window → draft pull request | Show the completed session and open its draft pull request. Review the stylesheet link in `index.html` and confirm the new `static/styles.css` matches `docs/styles.css`. | "The agent has finished, and the app now uses the stylesheet from the repository. I'll open the draft pull request and check the two-file change: one link in the template and an unchanged copy of the supplied CSS." |
-| Pull request → Spring Boot Dashboard | Select **Checkout** on the pull request, then select **Run** for **springboot-mcp-demo** in the Dashboard. Wait silently until it is running on port 8080. | "The change is focused, so I'll select Checkout on the pull request, then select Run for the app in the Spring Boot Dashboard." |
-| Spring Boot Dashboard → VS Code browser | Select the app's **Open** action to open http://localhost:8080 in VS Code. Show the styled page, enter **Review the new design**, select **Add**, and select its checkbox to show the completed style. Then select **Stop** for the app and return to the draft pull request. | "The page now has a clear layout and styled controls. I'll enter `Review the new design`, select Add, and select its checkbox to confirm both the original flow and the new completed style. The change works, so I'll select Stop for the app and return to the pull request for the final review." |
-
-**Exact prompt to paste into Copilot Chat:**
-
-> Use `docs/styles.css` exactly as provided. Copy it unchanged to `src/main/resources/static/styles.css`. In `src/main/resources/templates/index.html`, add `<link rel="stylesheet" th:href="@{/styles.css}" />` after the favicon link. Do not redesign, rewrite, or reformat the CSS, and do not modify the source file in `docs`. Preserve all routes, behavior, accessibility labels, and `data-testid` attributes. Do not add JavaScript or dependencies. Run the existing tests and open a pull request.
-
-**Capture during recording:** the Agents window new-session picker showing the writable GitHub fork, then the exact prompt before it is sent.
-
-**Capture during recording:** the draft pull request showing the template and stylesheet diff.
-
-### Outro — Talking head (~30s)
-
-> And there it is. The GitHub Copilot coding agent took a repository task, worked on it in the cloud, and returned a pull request for me to review. I checked the exact changes and ran the result before deciding what gets merged. That’s the point: the agent can work asynchronously without taking the final decision out of your hands. What task would you delegate to the coding agent? Let me know in the comments. Thanks for watching, and happy building.
-
-**Do:** Hold on the reviewed draft pull request, then fade out.
-
----
-
 ## Resources (video descriptions / hand-off)
 
 - **Demo source:** https://github.com/microsoft/github-copilot-java-mcp-demo
@@ -205,4 +166,3 @@
 - **Model Context Protocol:** https://modelcontextprotocol.io
 - **Model Context Protocol in Visual Studio Code:** https://code.visualstudio.com/docs/copilot/chat/mcp-servers
 - **Playwright Model Context Protocol server:** https://github.com/microsoft/playwright-mcp
-- **GitHub Copilot coding agent:** https://docs.github.com/en/copilot

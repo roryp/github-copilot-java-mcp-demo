@@ -140,34 +140,14 @@ Review the Playwright tool calls and final verification in Copilot Chat.
 
 ---
 
-## Optional next step — GitHub Copilot coding agent
-
-The Todo page intentionally uses the browser's default styling. A prepared task,
-[docs/copilot-agent-issue.md](docs/copilot-agent-issue.md), asks the coding agent to
-install the supplied [stylesheet](docs/styles.css) without changing its contents
-or the app's behavior. This
-requires a GitHub account with Copilot coding agent enabled and write access to
-the repository or a fork. For this sample, fork the repository and clone the fork
-so it is the `origin` remote. Run **Chat: Open Agents Window** from the Command
-Palette, select **New**, and use the workspace dropdown to choose the writable
-fork as a GitHub repository instead of the local folder or the `microsoft`
-upstream. Selecting a repository there automatically uses Copilot cloud agent.
-The regular Chat view does not expose this repository picker. If the target
-repository belongs to an organization that enforces SAML SSO, authorize VS Code's
-GitHub OAuth app for that organization first. Then review and test the draft pull
-request before deciding whether to merge it.
-
----
-
 ## Demo recording script
 
-[scripts/script.md](scripts/script.md) is a four-episode walkthrough that uses this project
+[scripts/script.md](scripts/script.md) is a three-episode walkthrough that uses this project
 to demo **Java** development in **VS Code** with **GitHub Copilot**:
 
 1. Build and debug a Spring Boot app (Extension Pack for Java, Spring Initializr, breakpoints, live memory view).
 2. Expose the endpoints to Copilot as **MCP** tools.
 3. Let Copilot test the UI end to end with **Playwright**.
-4. Ask the **GitHub Copilot coding agent** to polish the UI, then review and validate the draft PR it opens.
 
 ---
 
