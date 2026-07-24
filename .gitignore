@@ -16,6 +16,9 @@ scripts/capture-initializr.ps1
 scripts/capture-window.ps1
 scripts/screenshots/
 
+# Personal VS Code agent profiles
+.github/agents/demo-script-auditor.agent.md
+
 !**/src/main/**/target/
 !**/src/test/**/target/
 
