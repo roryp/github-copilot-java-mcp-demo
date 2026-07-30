@@ -1,0 +1,38 @@
+VIDEO 1 — INTRO
+
+How long does it take to go from a folder of Java files to a running web app? Two extensions, and the tooling does the rest, all driven from Visual Studio Code. Let’s jump right in.
+
+
+VIDEO 1 — OUTRO
+
+And there it is. We installed the Java and Spring extensions, watched them import the cloned project, and explored the finished Todo app from model to controller. Then we built it, ran it from the Spring Boot Dashboard, and verified its core browser flow. That took us from a plain folder of files to a working Spring Boot application, all driven from Visual Studio Code. What would you build first with Java and Spring Boot? Let us know in the comments. Thanks for watching, and happy building.
+
+
+VIDEO 2 — INTRO
+
+What happens between a click in the browser and the Java code that handles it? We’ll stop a real request in mid-air and read what it’s carrying, all driven from Visual Studio Code. Let’s jump right in.
+
+
+VIDEO 2 — OUTRO
+
+And there it is. We followed a browser request into `TodoController`, inspected its title, stepped into `TodoService`, and watched the completed request return to the page. Then we used the Spring Boot Dashboard to confirm the app’s health and monitor its live heap. That is how you inspect a running Spring Boot app instead of guessing at what it is doing, all driven from Visual Studio Code. What request would you trace first in your own application? Let us know in the comments. Thanks for watching, and happy building.
+
+
+VIDEO 3 — INTRO
+
+What if GitHub Copilot could call your own Java methods, not just write them? The Model Context Protocol turns them into tools Copilot can use, all driven from Visual Studio Code. Let’s jump right in.
+
+
+VIDEO 3 — OUTRO
+
+And there it is. We used Spring AI to expose Java operations as tools through the Model Context Protocol, connected those tools to GitHub Copilot, and kept the web page and Copilot using the same service. After a browser refresh, a change made through Copilot appears in the web page, all driven from Visual Studio Code. What part of your own Java application would you turn into a Copilot tool? Let us know in the comments. Thanks for watching, and happy building.
+
+
+VIDEO 4 — INTRO
+
+Your tests are all green — but is the page actually working? We’ll give GitHub Copilot a real browser and let it find out, all driven from Visual Studio Code. Let’s jump right in.
+
+
+VIDEO 4 — OUTRO
+
+And there it is. We connected Playwright to GitHub Copilot through the Model Context Protocol and had Copilot test the Spring Boot app in a real browser, all driven from Visual Studio Code. Combined with the unit and integration tests, that gives us confidence in both the code and the experience a user actually sees. What browser workflow would you ask Copilot to test in your own app? Let us know in the comments. Thanks for watching, and happy building.
