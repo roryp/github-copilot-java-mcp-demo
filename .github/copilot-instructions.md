@@ -31,7 +31,6 @@
 - Use a short name such as `the Dashboard` or `in Chat` only after the full name has appeared earlier in the same chapter. A short form in a Prerequisites bullet still counts as a first use.
 - Name a file with a path the first time a chapter asks the reader to open it. A class name alone is not enough to find the file.
 - Forward references to a later chapter are fine and should be links. Never require the reader to have read an earlier one.
-- Prefer VS Code UI over terminal commands, matching the rest of the project.
 
 ## Reviewing docs changes
 
@@ -81,10 +80,9 @@
 - Verify a UI label before changing or flagging it. View ids, view order, titles, and `when` clauses come from the extension's `package.json`; VS Code's own labels live in both `out/vs/workbench/workbench.desktop.main.js` and `out/nls.messages.js`, so check both before concluding a label is wrong.
 - Checking a `Do` cell against its `Say` cell cannot find an error the two columns share, so verify every UI label, view name, and step order against the product itself rather than against the other column.
 - The Spring Boot Dashboard only reports the app as running, and only shows its **Properties** and **Memory** sections, when VS Code launched the process. Never check those against an app started from a terminal.
-- Always shut the application down with the Dashboard's **Stop** action. Ending only the debug session leaves the Java process holding port 8080, so confirm the port is free afterwards.
+- Shutting the app down depends on how it was launched. A **Run**-launched process stops cleanly with the Dashboard's **Stop** action. A **Debug**-launched process does not — on Debugger for Java 0.59.0 neither **Stop** nor the debug toolbar ends it ([vscode-java-debug#1585](https://github.com/microsoft/vscode-java-debug/issues/1585)) — so end it with the terminal's **Kill Terminal** action, as Episode 2 and Chapter 2 both do. Confirm port 8080 is free afterwards either way.
 - The Maven build and application startup both print expected warnings. Treat **`BUILD SUCCESS`** and the started message as the only success signals, and keep the walkthrough's **Expected warnings** note saying they are normal.
 - Spring Boot Tools renders its inline URL hints against `127.0.0.1`, so never state the host in spoken copy; refer to `the root hint` instead.
-- Captions must describe what a clean take actually produces. If an embedded screenshot came from an earlier run with extra data, say so in the caption rather than presenting the image as the expected result.
 - When running the demo to verify something, free port 8080 first, stop everything you start, and leave the port free.
 - Prefer VS Code features and UI workflows over terminal commands throughout this project. Use the terminal only when VS Code has no practical equivalent for the task.
 - Keep video-facing MCP and browser verification focused on VS Code. Prefer Copilot Chat with configured MCP tools, and do not add raw protocol smoke-test scripts or advanced shell commands unless the user explicitly requests them.
