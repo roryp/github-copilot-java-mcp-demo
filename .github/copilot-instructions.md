@@ -2,7 +2,9 @@
 
 ## Files and where copy lives
 
-- `scripts/script.md` is the **published walkthrough**. It ships on `main` to both the fork and the microsoft repo, so it is viewer-facing: columns are `#`, `Where`, `Do`, `Paste`, with no narration, no intro or outro copy, and no recorder-facing notes.
+- `docs/` is the **four-chapter learning series** and the repository's primary deliverable. It ships on `main` to both the fork and the microsoft repo. `docs/README.md` is the series index; `docs/1-build-and-run.md` through `docs/4-test-with-playwright.md` are the chapters; `docs/images/` holds their figures.
+- The root `README.md` **leads with the training series**, immediately after the description and stack line. The architecture diagram and the sample caveat sit below it under `How the sample fits together`. Do not push the series back down the page; the repository's purpose belongs above its build, run, and test instructions.
+- `scripts/script.md` is the **condensed walkthrough**, the same four topics as a step-by-step table for readers who want the actions without the explanation. It ships on `main`, so it is viewer-facing: columns are `#`, `Where`, `Do`, `Paste`, with no narration, no intro or outro copy, and no recorder-facing notes.
 - `scripts/script-narration.md` is the **presenter narration** and the golden source for spoken copy. Columns are `#`, `Say`, `Paste`. It is gitignored and exists only on the fork's `narration` branch.
 - `scripts/elgato-prompter-intros-outros.txt` holds the intro and outro copy verbatim. It is gitignored and also lives only on the `narration` branch.
 - Every rule below about `Say` cells, spoken voice, intros, and outros applies to `scripts/script-narration.md` and the prompter file. Rules about `Where`, `Do`, and `Paste` cells apply to `scripts/script.md`.
@@ -12,13 +14,35 @@
 ## Branches and remotes
 
 - `origin` is the fork (`roryp`). `upstream` and `microsoft` are two remote names for the same public repo, `microsoft/github-copilot-java-mcp-demo`.
-- `main` carries `scripts/script.md` only, and must be identical on `origin/main`, `upstream/main`, and `microsoft/main`.
-- `narration` is fork-only. It carries the published `scripts/script.md` plus the two presenter files, which are force-added with `git add -f` because `.gitignore` excludes them. Never push `narration` to `upstream` or `microsoft`.
-- To publish a `scripts/script.md` change: commit on `main`, `git push origin main`, `git push upstream main`, then `git switch narration; git merge main; git push origin narration`.
-- Before pushing to `upstream`, confirm the push is a fast-forward with `git merge-base --is-ancestor upstream/main origin/main`, and confirm `git diff --name-only upstream/main origin/main` lists no presenter file.
-- Switching from `narration` to `main` deletes both presenter files from the working tree, because they are tracked only on `narration`. Restore them with `git restore --source=narration --worktree scripts/script-narration.md scripts/elgato-prompter-intros-outros.txt`, which does not stage them on `main`. Do not use `git checkout narration -- <path>`, which does.
+- `main` carries the shipping content — `docs/`, `scripts/script.md`, `README.md`, and the application source — and must be identical on `origin/main`, `upstream/main`, and `microsoft/main`. It must never carry a presenter file.
+- `narration` is fork-only. It carries everything on `main` plus the two presenter files and this instructions file, which are force-added with `git add -f` because `.gitignore` excludes them. Never push `narration` to `upstream` or `microsoft`.
+- To publish any change to shipping content: commit on `main`, `git push origin main`, `git push upstream origin/main:refs/heads/main`, then `git switch narration; git merge main; git push origin narration`.
+- Before pushing to `upstream`, run all three pre-flight checks: `git merge-base --is-ancestor upstream/main origin/main` must exit 0, `git diff --name-only upstream/main origin/main` must list only the intended files, and that list must contain no `script-narration`, `elgato-prompter`, or `copilot-instructions` path.
+- When work is started on `narration` but belongs on `main`, switch branches rather than committing it in the wrong place. Untracked files and a modified tracked file carry cleanly across `git switch main`, provided the tracked file is identical on both branches — confirm with `git diff main narration -- <path>` first. Stage explicitly with `git add <paths>`, never `git add -A`.
+- Switching from `narration` to `main` deletes the presenter files and this instructions file from the working tree, because they are tracked only on `narration`. Restore them with `git restore --source=narration --worktree scripts/script-narration.md scripts/elgato-prompter-intros-outros.txt`, which does not stage them on `main`. Do not use `git checkout narration -- <path>`, which does.
 - A gitignored file that is tracked on the current branch makes `git check-ignore -q` return non-zero. Use `git check-ignore --no-index -v` to confirm the ignore rule still exists.
-- When something looks reverted on GitHub, check all four refs before concluding anything: `origin/main`, `origin/narration`, `upstream/main`, `microsoft/main`. Read the file itself with `git show <ref>:scripts/script.md` rather than trusting branch names.
+- When something looks reverted on GitHub, check all four refs before concluding anything: `origin/main`, `origin/narration`, `upstream/main`, `microsoft/main`. Read the file itself with `git show <ref>:<path>` rather than trusting branch names.
+
+## The docs/ learning series
+
+- Every chapter follows the same template, in this order: H1 title, hook paragraphs with no heading, `## What You Will Learn` with bold-lead bullets and a Mermaid journey diagram as Fig 1, `## Problem Framing: ...` containing a `**Try this**` block, `## Prerequisites` with bold-lead bullets and any warning blockquotes, one or more concept sections, `## Exercise - <verb>` with numbered steps, `## Quick Question`, `## Answer`, `## What's Next` linking the next chapter, `## Learn more` with annotated links, then `---` and the navigation footer.
+- Figures are an image followed by a plain `Fig N: caption` line, numbered per chapter. Renumber the whole chapter when inserting one.
+- Each chapter must stand alone. Explain every product, dependency, and view the first time **that chapter** uses it, even when an earlier chapter already explained it. Check first use per chapter, not per series.
+- Use a short name such as `the Dashboard` or `in Chat` only after the full name has appeared earlier in the same chapter. A short form in a Prerequisites bullet still counts as a first use.
+- Name a file with a path the first time a chapter asks the reader to open it. A class name alone is not enough to find the file.
+- Forward references to a later chapter are fine and should be links. Never require the reader to have read an earlier one.
+- Prefer VS Code UI over terminal commands, matching the rest of the project.
+
+## Reviewing docs changes
+
+- Structural checks cannot find the defects that matter. Treat a green automated run as a regression guard, never as a review.
+- **Read every caption against its own image.** Open the figure and the surrounding paragraph together. The recurring failure is a caption that describes the run you remember rather than the picture on the page — for example claiming a screenshot shows two tool calls when it is scrolled to the first.
+- If an embedded screenshot carries data a clean run would not produce, say so in the caption instead of presenting it as the expected result. Prefer recapturing.
+- The old numbered images `01-web-app.png`, `05-memory-view.png`, and `07-playwright-run.png` show stale sample rows that no exercise produces. They exist only because `scripts/script.md` still references them. The `docs/` chapters must use the `ch*` captures.
+- **Walk the numbered steps as a reader** who has only this chapter. Missing locations, collapsed panels, and unnamed files surface here and nowhere else.
+- **Execute the documented flow before claiming it works.** Start the app and verify against rendered HTML, not against an RPC envelope or your own memory. This is the only check that separates documented from true.
+- After publishing, open the pages on GitHub and confirm the images load, the Mermaid diagrams paint, and the relative links resolve. Mermaid renders in a sandboxed iframe, so a blank box in an early screenshot is usually loading, not a syntax error.
+- `marketplace.visualstudio.com` returns 404 to scripted requests. Re-test with a browser `User-Agent` before concluding a link is dead.
 
 ## Writing rules
 
