@@ -5,19 +5,19 @@ the same data to MCP clients such as GitHub Copilot
 
 ## Start here — the four-chapter training series
 
-**[Open the series →](docs/README.md)**
+**[Open the series →](docs/README.md)** | **[Watch the full video playlist](https://www.youtube.com/playlist?list=PLHogqfURGnrA)**
 
 This repository exists to teach **Java** development in **VS Code** with **GitHub Copilot**.
 The series takes this sample from a cloned folder to an app Copilot can call and test.
 Each chapter stands on its own, explains the concepts alongside the steps, and ends with a
 working result.
 
-| # | Chapter | What you build |
-|---|---------|----------------|
-| 1 | [Build and Run Your First Spring Boot App](docs/1-build-and-run.md) | Install the two extension packs, read the project structure, then build and run the app with Maven and the Spring Boot Dashboard. |
-| 2 | [Debug and Inspect a Spring Boot Request](docs/2-debug-and-inspect.md) | Pause a live request in the Java debugger, step across the class boundary, then check health and live memory. |
-| 3 | [Expose Your Java Operations to Copilot with MCP](docs/3-expose-tools-with-mcp.md) | Publish the service operations as **MCP** tools and drive them from Copilot Chat. |
-| 4 | [Let Copilot Test Your App with Playwright](docs/4-test-with-playwright.md) | Hand Copilot browser tools and have it test the UI end to end with **Playwright**. |
+| # | Chapter | What you build | Video |
+|---|---------|----------------|-------|
+| 1 | [Build and Run Your First Spring Boot App](docs/1-build-and-run.md) | Install the two extension packs, read the project structure, then build and run the app with Maven and the Spring Boot Dashboard. | [Watch on YouTube](https://www.youtube.com/watch?v=ZX8LEQpKPx0&list=PLHogqfURGnrA&index=1) |
+| 2 | [Debug and Inspect a Spring Boot Request](docs/2-debug-and-inspect.md) | Pause a live request in the Java debugger, step across the class boundary, then check health and live memory. | [Watch on YouTube](https://www.youtube.com/watch?v=y8SdqmjEqq8&list=PLHogqfURGnrA&index=2) |
+| 3 | [Expose Your Java Operations to Copilot with MCP](docs/3-expose-tools-with-mcp.md) | Publish the service operations as **MCP** tools and drive them from Copilot Chat. | [Watch on YouTube](https://www.youtube.com/watch?v=gzyU4yn0qGw&list=PLHogqfURGnrA&index=3) |
+| 4 | [Let Copilot Test Your App with Playwright](docs/4-test-with-playwright.md) | Hand Copilot browser tools and have it test the UI end to end with **Playwright**. | [Watch on YouTube](https://www.youtube.com/watch?v=NR4YHj_9WFw&list=PLHogqfURGnrA&index=4) |
 
 Prefer the actions without the explanation? [scripts/script.md](scripts/script.md) covers
 the same four topics as a condensed step-by-step table.
