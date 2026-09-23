@@ -1,5 +1,9 @@
 # Let GitHub Copilot Test Your Spring Boot App with Playwright
 
+[![Watch the video: End-to-End Testing for Spring Boot apps with Playwright in VS Code](https://i.ytimg.com/vi/NR4YHj_9WFw/hqdefault.jpg)](https://www.youtube.com/watch?v=NR4YHj_9WFw&list=PLHogqfURGnrA&index=4)
+
+**Watch the video:** [End-to-End Testing for Spring Boot apps with Playwright in VS Code](https://www.youtube.com/watch?v=NR4YHj_9WFw&list=PLHogqfURGnrA&index=4)
+
 Your unit tests pass. Your integration tests pass. And you still open the browser
 afterwards to check that the page actually works, because a green build has never proved
 that a checkbox ticks.

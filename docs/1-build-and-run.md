@@ -1,5 +1,9 @@
 # Build and Run Your First Spring Boot App in Visual Studio Code
 
+[![Watch the video: Getting started with your first Java app in VS Code](https://i.ytimg.com/vi/ZX8LEQpKPx0/hqdefault.jpg)](https://www.youtube.com/watch?v=ZX8LEQpKPx0&list=PLHogqfURGnrA&index=1)
+
+**Watch the video:** [Getting started with your first Java app in VS Code](https://www.youtube.com/watch?v=ZX8LEQpKPx0&list=PLHogqfURGnrA&index=1)
+
 You know that moment when you clone a Java repository, open it, and nothing happens? No
 run button, no green ticks, no clue which of the two hundred files is the one that
 starts. Just a folder.

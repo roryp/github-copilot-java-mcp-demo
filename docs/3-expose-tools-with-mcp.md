@@ -1,5 +1,9 @@
 # Expose Your Java Operations to GitHub Copilot with MCP
 
+[![Watch the video: Expose your Spring Boot API endpoints via MCP and GitHub Copilot](https://i.ytimg.com/vi/gzyU4yn0qGw/hqdefault.jpg)](https://www.youtube.com/watch?v=gzyU4yn0qGw&list=PLHogqfURGnrA&index=3)
+
+**Watch the video:** [Expose your Spring Boot API endpoints via MCP and GitHub Copilot](https://www.youtube.com/watch?v=gzyU4yn0qGw&list=PLHogqfURGnrA&index=3)
+
 GitHub Copilot is very good at writing Java. It is far less good at knowing what is
 currently in *your* running application, because it cannot see it.
 

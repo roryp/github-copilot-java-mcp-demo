@@ -1,5 +1,9 @@
 # Debug and Inspect a Spring Boot Request in Visual Studio Code
 
+[![Watch the video: Debugging your Java App in VS Code](https://i.ytimg.com/vi/y8SdqmjEqq8/hqdefault.jpg)](https://www.youtube.com/watch?v=y8SdqmjEqq8&list=PLHogqfURGnrA&index=2)
+
+**Watch the video:** [Debugging your Java App in VS Code](https://www.youtube.com/watch?v=y8SdqmjEqq8&list=PLHogqfURGnrA&index=2)
+
 A web app that works is not the same as a web app you understand. The page says the item
 was added. It does not say which method received the title, where the id came from, or
 whether the process is healthy while it does all that.
